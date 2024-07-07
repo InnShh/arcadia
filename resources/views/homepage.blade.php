@@ -13,61 +13,7 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-        <header class="container-fluid sticky-top">
-            <div>
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <i class="bi bi-list"></i>
-                </button>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <figure>
-                        <a href="">
-                            <img src="/images/arcadia_logo.svg" alt="Arcadia logo">
-                        </a>
-                    </figure>
-                    <figcaption>Logo of the Arcadia Zoo</figcaption>
-                    <div>
-                        <ul class="main-menu">
-                            <li>
-                                <a href="">EXHIBITS</a>
-                            </li>
-                            <li>
-                                <a href="">ANIMALS</a>
-                            </li>
-                            <li>
-                                <a href="">SERVICES</a>
-                            </li>
-                            <li>
-                                <a href="">REVIEWS</a>
-                            </li>
-                            <li>
-                                <a href="">DONATE</a>
-                            </li>
-                            <li>
-                                <a href="">contact</a>
-                            </li>
-                        {{--    <li>
-                                @if (Route::has('login'))
-                                    @auth
-                                    <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        Dashboard
-                                    </a>
-                                    @else
-                                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        Log in
-                                    </a>
-                                    @endauth
-                                @endif
-                            </li> --}}
-                        </ul>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </header>
+        <x-header />
         <main>
             <section class="hero-bg">
                 <div class="hero-content">
@@ -107,7 +53,7 @@
                 </div>
             </section>
 
-            <section class="container general-wrapper" style="padding:0;">
+            <section class="container general-wrapper" id="all-exhibits" style="padding:0;">
                 <div id="carouselExhibitAutoplaying" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -183,7 +129,7 @@
                 </div>
             </section>
 
-            <section class="container-fluid general-wrapper animals m-0">
+            <section class="container-fluid general-wrapper animals m-0" id="animals-all">
                 <div class="container row m-auto">
                     <h2 class="text-title">Animals</h2>
                     <p class="general-text">
@@ -246,7 +192,7 @@
                 </div>
             </section>
 
-            <section class="container-fluid general-wrapper reviews mt-0">
+            <section class="container-fluid general-wrapper reviews mt-0" id="reviews-all">
                 <div class="container row m-auto">
                     <div class="col-12 col-md-6">
                         <div class="row justify-content-center">
@@ -342,7 +288,7 @@
                     </div>
                 </div>
             </section>
-            <section class="container general-wrapper activities">
+            <section class="container general-wrapper activities" id="activities-all">
                 <div class="row">
                     <h1 class="text-title">Activities</h1>
                     <p class="general-text">
@@ -429,108 +375,8 @@
                     </div>
                 </div>
             </section>
-
-            <section class="container-fluid general-wrapper donate m-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-lg-4">
-                            <h2>Donate</h2>
-                            <a href="https://www.paypal.com/" class="btn-filled" target="_blank">
-                                <img src="/images/PayPal-logo-white.png" alt="logotype PayPal">
-                            </a>
-                            <a href="https://www.paypal.com/" class="btn-filled" target="_blank">
-                                <img src="/images/Card-logo-white.svg" alt="logo card">Debit or Credit card
-                            </a>
-                            <figure>
-                                <img src="/images/arcadia_logo.svg" alt="Arcadia logo" />
-                            </figure>
-                            <div class="col-12">
-                                <ul class="social">
-                                    <li>
-                                        <a href="" class="soc-icon">
-                                            <i class="bi bi-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="soc-icon">
-                                            <i class="bi bi-twitter-x"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="soc-icon">
-                                            <i class="bi bi-youtube"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="soc-icon">
-                                            <i class="bi bi-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="soc-icon">
-                                            <i class="bi bi-pinterest"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-8">
-                            <h2>Contact</h2>
-                            <form class="contact">
-                                <div>
-                                    <div>
-                                        <input class="form-control w-chbl" type="text" placeholder="First name" required>
-                                    </div>
-                                    <div>
-                                        <input class="form-control w-chbl" type="text" placeholder="Last name" required>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <input class="form-control w-chbl" type="tel" placeholder="Telephone" required>
-                                    </div>
-                                    <div>
-                                        <input class="form-control w-chbl" type="email" placeholder="Last name" required>
-                                    </div>
-                                </div>
-                                <div>
-                                    <textarea class="form-control" type="text" rows="6" required>Your message</textarea>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-filled w-chbl">S U B M I T</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
+            <x-donate-contact />
         </main>
-        <footer class="container-fluid general-wrapper m-0">
-            <ul>
-                <li>
-                    <a href="">Home</a>
-                </li>
-                <li>
-                    <a href="">Exhibits</a>
-                </li>
-                <li>
-                    <a href="">Animals</a>
-                </li>
-                <li>
-                    <a href="">Activities</a>
-                </li>
-                <li>
-                    <a href="">Reviews</a>
-                </li>
-                {{--    <li>
-                    <a href="">Log In</a>
-                </li> --}}
-                <li>
-                    <a href="">Terms & Conditions</a>
-                </li>
-            </ul>
-            <span>&#169; Copyright 2024. All rights reserved.</span>
-        </footer>
+        <x-footer />
     </body>
 </html>
