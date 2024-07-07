@@ -1,12 +1,14 @@
-// Body
-$body-bg: #eef7ff;
+//Custom vars
+//Typography
+$title-font: "Bebas Neue", sans-serif;
+$text-font: "Noto Sans", sans-serif;
 
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+//Colors
+$accent-color:#678F3F;
+$black-color: #0b0b0b;
+$white-color: #ffffff;
+$wheat-color:wheat;
+$secondary-accent-color: #FCB64D;
 
-// variables
-
-$secondary-color : #BABE;
-$primary-color: #DEAD;
+//Spacing params
+$one-space:1em;
