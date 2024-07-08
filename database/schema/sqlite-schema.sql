@@ -17,3 +17,12 @@ INSERT INTO migrations VALUES(1,'0001_01_01_000000_create_users_table',1);
 INSERT INTO migrations VALUES(2,'0001_01_01_000001_create_cache_table',1);
 INSERT INTO migrations VALUES(3,'0001_01_01_000002_create_jobs_table',1);
 /* custom schema */
+CREATE TABLE IF NOT EXISTS reviews (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    pseudo VARCHAR(255) NOT NULL,
+    comment TEXT NOT NULL,
+    rating INT NOT NULL,
+    created_at DATETIME,
+    updated_at DATETIME,
+    approved TINYINT(1) DEFAULT 0
+);
