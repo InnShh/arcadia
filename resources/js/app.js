@@ -1,8 +1,9 @@
 import './bootstrap';
 
 //onload parallax
-document.addEventListener("DOMContentLoaded", function() {
-    const hero = document.querySelector('.hero-bg');
+// document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function() {
+        const hero = document.querySelector('.hero-bg');
     const heroContent = document.querySelector('.hero-content');
     const frontL = document.querySelector('.lion');
   
@@ -29,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
     });
   });
- 
+
+  
 //FadeInRight animation on scroll
 document.addEventListener('DOMContentLoaded', function() {
     const animElement = document.querySelector('.anim');

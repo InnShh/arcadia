@@ -6,10 +6,6 @@
 
         <title>ARCADIA</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body>
@@ -57,52 +53,75 @@
                 <div id="carouselExhibitAutoplaying" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/images/desert-fox-1x.jpg" srcset="/images/desert-fox-1x.jpg 1x, /images/desert-fox-2x.jpg 2000w" class="d-block w-100" alt="Savanna living fox">
-                            <div class="bg-gradient">
-                                <div class="carousel-caption">
-                                    <h5 class="second-level-title">Savanna</h5>
-                                    <p class="general-text">
-                                        The Savanna habitat at Arcadia Zoo spans a 
-                                        vast area, meticulously designed to mimic 
-                                        the open grasslands of Africa. Giraffes, zebras, 
-                                        and antelopes roam freely, creating a dynamic 
-                                        and authentic savanna experience for 
-                                        both the animals and visitors. The habitat 
-                                        features native plants and waterholes, ensuring 
-                                        a realistic and enriching environment. Visitors 
-                                        can observe the natural behaviors and 
-                                        interactions of these majestic species from 
-                                        specially designed viewing platforms. 
-                                        This immersive habitat underscores 
-                                        Arcadia Zoo’s commitment to conservation 
-                                        and the 
-                                        preservation of wildlife in their 
-                                        natural settings.
-                                    </p>
+                            <a href="{{ route('savanna') }}">
+                                <img src="/images/desert-fox-1x.jpg" srcset="/images/desert-fox-1x.jpg 1x, /images/desert-fox-2x.jpg 2000w" class="d-block w-100" alt="Savanna living fox">
+                                <div class="bg-gradient">
+                                    <div class="carousel-caption">
+                                        <h5 class="second-level-title">Savanna</h5>
+                                        <p class="general-text">
+                                            The Savanna habitat at Arcadia Zoo spans a 
+                                            vast area, meticulously designed to mimic 
+                                            the open grasslands of Africa. Giraffes, zebras, 
+                                            and antelopes roam freely, creating a dynamic 
+                                            and authentic savanna experience for 
+                                            both the animals and visitors. The habitat 
+                                            features native plants and waterholes, ensuring 
+                                            a realistic and enriching environment. Visitors 
+                                            can observe the natural behaviors and 
+                                            interactions of these majestic species from 
+                                            specially designed viewing platforms. 
+                                            This immersive habitat underscores 
+                                            Arcadia Zoo’s commitment to conservation 
+                                            and the 
+                                            preservation of wildlife in their 
+                                            natural settings.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="carousel-item">
-                            <img src="/images/polar-bear-1x.jpg" srcset="/images/polar-bear-1x.jpg, /images/polar-bear-2x.jpg 2000w" class="d-block w-100" alt="Savanna living fox">
-                            <div class="bg-gradient">
-                                <div class="carousel-caption">
-                                    <h5 class="second-level-title">Arctic Exhibit</h5>
-                                    <p class="general-text">
-                                    At our zoo's Arctic exhibit, 
-                                    immerse yourself in a world of snow and ice, 
-                                    home to fascinating creatures like polar bears, 
-                                    seals, and Arctic foxes. Witness these animals' 
-                                    incredible adaptations to their harsh environment, 
-                                    from thick fur to agile hunting skills. Learn about 
-                                    the delicate balance of the Arctic ecosystem and 
-                                    the conservation efforts dedicated to preserving 
-                                    these vital habitats. Engage in interactive 
-                                    displays that showcase the beauty and challenges 
-                                    of Arctic life, inspiring a deeper understanding 
-                                    and commitment to wildlife conservation.
-                                    </p>
-                                </div>
-                            </div>
+                            <a href="{{ route('arctic') }}">
+                                <img src="/images/polar-bear-1x.jpg" srcset="/images/polar-bear-1x.jpg, /images/polar-bear-2x.jpg 2000w" class="d-block w-100" alt="Savanna living fox">
+                                <div class="bg-gradient">
+                                    <div class="carousel-caption">
+                                        <h5 class="second-level-title">Arctic Exhibit</h5>
+                                        <p class="general-text">
+                                        At our zoo's Arctic exhibit, 
+                                        immerse yourself in a world of snow and ice, 
+                                        home to fascinating creatures like polar bears, 
+                                        seals, and Arctic foxes. Witness these animals' 
+                                        incredible adaptations to their harsh environment, 
+                                        from thick fur to agile hunting skills. Learn about 
+                                        the delicate balance of the Arctic ecosystem and 
+                                        the conservation efforts dedicated to preserving 
+                                        these vital habitats. Engage in interactive 
+                                        displays that showcase the beauty and challenges 
+                                        of Arctic life, inspiring a deeper understanding 
+                                        and commitment to wildlife conservation.
+                                        </p>
+                                    </div>
+                                </div>   
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="{{ route('forest') }}">
+                                <img src="/images/wolf-x1.jpg" class="d-block w-100" alt="Forest living wolf">
+                                <div class="bg-gradient">
+                                    <div class="carousel-caption">
+                                        <h5 class="second-level-title">Forest Exhibit</h5>
+                                        <p class="general-text">
+                                        The Forest Exhibit at Arcadia Zoo invites you to explore 
+                                        the lush greenery and diverse wildlife where nature's wonders come alive. 
+                                        Immerse yourself in the serene ambiance, home to a variety of birds, 
+                                        mammals, and unique plant species. Discover the captivating beauty 
+                                        and biodiversity of the forest ecosystem, perfect for nature 
+                                        enthusiasts of all ages. Witness the harmonious coexistence of flora and fauna, 
+                                        a tranquil retreat that highlights the zoo's commitment to conservation.
+                                        </p>
+                                    </div>
+                                </div>   
+                            </a>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExhibitAutoplaying" data-bs-slide="prev">
@@ -140,53 +159,18 @@
                         Bring your family and friends for an unforgettable adventure filled with learning and fun.
                     </p>
                 </div>
-                <div class="container row animals-content-wrapper ms-auto me-auto mt-sm-5 mt-3">
-                    <div class="card ms-2 me-2 mt-2 mb-2">
-                        <a href="">
-                            <figure>
-                                <img src="/images/amur-tiger-1x.jpg" alt="Amur tiger face">
-                            </figure>
-                            <div class="card-body">
-                                <h3>Amur Tiger</h3>
-                                <p class="general-text">Forest Exhibit</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card ms-2 me-2 mt-2 mb-2">
-                        <a href="">
-                            <figure>
-                                <img src="/images/2giraffe-1x.jpg" alt="Giraffe with friend">
-                            </figure>
-                            <div class="card-body">
-                                <h3>Giraffe</h3>
-                                <p class="general-text">Savanna Exhibit</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card ms-2 me-2 mt-2 mb-2">
-                        <a href="">
-                            <figure>
-                                <img src="/images/polar-bear-1x.jpg" alt="Polar bear face">
-                            </figure>
-                            <div class="card-body">
-                                <h3>Polar bear</h3>
-                                <p class="general-text">Arctic Exhibit</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card ms-2 me-2 mt-2 mb-2">
-                        <a href="">
-                            <figure>
-                                <img src="/images/female-lion-1x.jpg" alt="African lion face">
-                            </figure>
-                            <div class="card-body">
-                                <h3>Lion</h3>
-                                <p class="general-text">Savanna Exhibit</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                </div>
+                <x-card-wrapper>
+                    <x-card href="/exhibit/zebra" img="/images/amur-tiger-1x.jpg" title="Amur Tiger" text="Forest Exhibit" />
+                    <x-card href="/exhibit/giraffe" img="/images/2giraffe-1x.jpg" title="Giraffe" text="Savanna Exhibit" />
+                    <x-card href="/exhibit/desert-fox" img="/images/polar-bear-1x.jpg" title="Polar bear" text="Arctic Exhibit" />
+                    <x-card href="/exhibit/lion" img="/images/female-lion-1x.jpg" title="Lion" text="Savanna Exhibit" />
+                </x-card-wrapper>
+                <x-card-wrapper>
+                    <x-card href="/exhibit/zebra" img="/images/amur-tiger-1x.jpg" title="Amur Tiger" text="Forest Exhibit" />
+                    <x-card href="/exhibit/giraffe" img="/images/2giraffe-1x.jpg" title="Giraffe" text="Savanna Exhibit" />
+                    <x-card href="/exhibit/desert-fox" img="/images/polar-bear-1x.jpg" title="Polar bear" text="Arctic Exhibit" />
+                    <x-card href="/exhibit/lion" img="/images/female-lion-1x.jpg" title="Lion" text="Savanna Exhibit" />
+                </x-card-wrapper>
                 <div class="row">
                     <button type="button" class="btn btn-outlined w-chbl">Load more</button>
                 </div>
