@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomePageController;
 
-Route::get('/', fn () => view('homepage'))->name('homepage');
+Route::get('/', [HomePageController::class, 'index'])->name('homepage');
 Route::get('/savanna', fn () => view('savannapage'))->name('savanna');
 Route::get('/savanna/giraffe-max', fn () => view('giraffemaxpage'))->name('giraffemax');
 Route::get('/forest', fn () => view('forestpage'))->name('forest');

@@ -19,7 +19,7 @@ class ReviewSeeder extends Seeder
             'comment' => 'I had a fantastic experience at Arcadia Zoo! The enclosures are spacious and beautifully designed, and it\'s clear the animals are well cared for. The staff is knowledgeable and friendly, making the visit even more enjoyable. I especially loved the Savanna exhibit with the giraffes and lions. Definitely worth to visit!',
             'rating' => 3,
             'created_at' => '2024-01-20 00:00:00',
-            'approved' => false,
+            'approved' => true,
         ]);
 
         Review::create([
@@ -27,7 +27,7 @@ class ReviewSeeder extends Seeder
             'comment' => 'I had a fantastic experience at Arcadia Zoo! The enclosures are spacious and beautifully designed, and it\'s clear the animals are well cared for. The staff is knowledgeable and friendly, making the visit even more enjoyable. I especially loved the Savanna exhibit with the giraffes and lions. Definitely worth to visit!',
             'rating' => 4,
             'created_at' => '2023-11-05 00:00:00',
-            'approved' => false,
+            'approved' => true,
         ]);
     }
 }
