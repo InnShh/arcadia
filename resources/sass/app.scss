@@ -164,6 +164,12 @@ main {
                 line-height: 0.6;
                 text-shadow: 2px 2px 9px #00000047;
                 font-size: 8em;
+                @media (min-width: 768px) {
+                    font-size: 13em;
+                }
+                @media (min-width: 1200px) {
+                    font-size: 17em;
+                }
                 @media (min-width: 1400px) {
                     font-size: 25em;
                     line-height: 0.45;
@@ -172,6 +178,12 @@ main {
             > span:not(.hero-title) {
                 font-family: 'Bebas Neue';
                 font-size: 44px;
+                @media (min-width: 786px) {
+                    font-size: 72px;
+                }
+                @media (min-width: 1200px) {
+                    font-size: 93px;
+                }
                 @media (min-width: 1400px) {
                     font-size: 8.5em;
               }
