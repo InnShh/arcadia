@@ -384,7 +384,18 @@ main {
     }
 }
 .testimonial-form {
-
+    .star-list {
+        font-family: 'Bootstrap-icons';
+        i::before {
+            font-style: normal;
+        }
+        .bi-star::before {
+        content: "\F588";
+        }
+        .bi-star-fill::before {
+            content: "\F586"; 
+        }
+    }
     form {
         input {
             @include input-style($secondary-accent-color);

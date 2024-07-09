@@ -77,3 +77,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+//Stars for form ratings
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.star-list .bi');
+    const ratingInput = document.getElementById('rating');
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            const ratingValue = parseInt(this.getAttribute('data-value'));
+            fillStars(ratingValue);
+        });
+
+        star.addEventListener('mouseout', function() {
+            const currentRating = parseInt(ratingInput.value);
+            fillStars(currentRating);
+        });
+
+        star.addEventListener('click', function() {
+            const ratingValue = parseInt(this.getAttribute('data-value'));
+            ratingInput.value = ratingValue;
+            fillStars(ratingValue);
+        });
+    });
+
+    function fillStars(rating) {
+        stars.forEach(star => {
+            const starValue = parseInt(star.getAttribute('data-value'));
+            if (starValue <= rating) {
+                star.classList.add('bi-star-fill');
+                star.classList.remove('bi-star');
+            } else {
+                star.classList.add('bi-star');
+                star.classList.remove('bi-star-fill');
+            }
+        });
+    }
+});

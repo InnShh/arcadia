@@ -257,12 +257,13 @@
                         </div>
                         <div class="row">
                             <ul class="star-list">
-                                <li class="list-inline-item"><i class="bi bi-star"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star"></i></li>
+                                <li class="list-inline-item"><i class="bi bi-star" data-value="1"></i></li>
+                                <li class="list-inline-item"><i class="bi bi-star" data-value="2"></i></li>
+                                <li class="list-inline-item"><i class="bi bi-star" data-value="3"></i></li>
+                                <li class="list-inline-item"><i class="bi bi-star" data-value="4"></i></li>
+                                <li class="list-inline-item"><i class="bi bi-star" data-value="5"></i></li>
                             </ul>
+                            <input type="hidden" name="rating" id="rating" value="0">
                         </div>
                         <div class="testimonial-form">
                             <form>
