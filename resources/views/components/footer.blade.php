@@ -1,19 +1,19 @@
 <footer class="container-fluid general-wrapper m-0">
             <ul>
                 <li>
-                    <a href="">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                 </li>
                 <li>
-                    <a href="#all-exhibits">Exhibits</a>
+                    <a href="{{ url('/') }}#all-exhibits">Exhibits</a>
                 </li>
                 <li>
-                    <a href="#animals-all">Animals</a>
+                    <a href="{{ url('/') }}#animals-all">Animals</a>
                 </li>
                 <li>
-                    <a href="#activities-all">Activities</a>
+                    <a href="{{ url('/') }}#activities-all">Activities</a>
                 </li>
                 <li>
-                    <a href="#reviews-all">Reviews</a>
+                    <a href="{{ url('/') }}#reviews-all">Reviews</a>
                 </li>
                 {{--    <li>
                     <a href="">Log In</a>

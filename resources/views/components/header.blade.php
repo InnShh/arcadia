@@ -9,7 +9,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <figure>
-                        <a href="">
+                        <a href="{{ url('/') }}">
                             <img src="/images/arcadia_logo.svg" alt="Arcadia logo">
                         </a>
                     </figure>
@@ -17,22 +17,22 @@
                     <div>
                         <ul class="main-menu">
                             <li>
-                                <a href="#all-exhibits">EXHIBITS</a>
+                                <a href="{{ url('/') }}#all-exhibits">EXHIBITS</a>
                             </li>
                             <li>
-                                <a href="#animals-all">ANIMALS</a>
+                                <a href="{{ url('/') }}#animals-all">ANIMALS</a>
                             </li>
                             <li>
-                                <a href="#activities-all">ACTIVITIES</a>
+                                <a href="{{ url('/') }}#activities-all">ACTIVITIES</a>
                             </li>
                             <li>
-                                <a href="#reviews-all">REVIEWS</a>
+                                <a href="{{ url('/') }}#reviews-all">REVIEWS</a>
                             </li>
                             <li>
-                                <a href="#donate-all">DONATE</a>
+                                <a href="{{ url('/') }}#donate-all">DONATE</a>
                             </li>
                             <li>
-                                <a href="#contact-all">contact</a>
+                                <a href="{{ url('/') }}#contact-all">contact</a>
                             </li>
                         {{--    <li>
                                 @if (Route::has('login'))

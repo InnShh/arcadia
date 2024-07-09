@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
         <title>ARCADIA</title>
 
@@ -266,7 +267,7 @@
                         <div class="testimonial-form">
                             <form>
                                 <input class="form-control w-chbl" type="text" placeholder="Your name" required>
-                                <textarea class="form-control w-chbl" type="text" rows="6" required>Your message</textarea>
+                                <textarea class="form-control w-chbl" type="text" rows="6" placeholder="Your message" required></textarea>
                                 <button type="button" class="btn btn-outlined w-chbl">S U B M I T</button>
                             </form>
                         </div>
