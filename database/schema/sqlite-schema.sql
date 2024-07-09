@@ -26,3 +26,16 @@ CREATE TABLE IF NOT EXISTS reviews (
     updated_at DATETIME,
     approved TINYINT(1) DEFAULT 0
 );
+CREATE TABLE IF NOT EXISTS timetables (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    day_of_week TINYINT NOT NULL,
+    opening_time CHAR(5),
+    closing_time CHAR(5)
+);
+INSERT INTO timetables VALUES(1, 1, NULL,NULL);
+INSERT INTO timetables VALUES(2, 2, '09:00','21:00');
+INSERT INTO timetables VALUES(3, 3, '09:00','21:00');
+INSERT INTO timetables VALUES(4, 4, '09:00','21:00');
+INSERT INTO timetables VALUES(5, 5, '09:00','21:00');
+INSERT INTO timetables VALUES(6, 6, '09:00','21:00');
+INSERT INTO timetables VALUES(7, 7, '09:00','21:00');
