@@ -46,30 +46,18 @@
             </section>
 
             <section class="container general-wrapper">
-                <div class="row animal-one">
-                    <div class="col-12 col-md-6">
-                        <figure class="avatar">
-                            <img src="/images/giraffe-max_400x400px.jpg" alt="Giraffe Max face" />
-                        </figure>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div>
-                            <h2>Max</h2>
-                            <p class="general-text">
-                                Max, the male giraffe, hails from the savannas of Kenya. At 8 years old, 
-                                he enjoys a diet rich in acacia leaves, consuming around 75 pounds 
-                                of foliage daily. Max is known for his gentle nature and impressive 
-                                height, making him a favorite among visitors.
-                            </p>
-                        </div>
-                        <div>
-                            <p class="general-text>">Race: <span class="race">Nubian giraffe</span></p>
-                            <p class="general-text>">Age: <span class="age">8 years</span></p>
-                            <p class="general-text>">Diet: <span class="diet">Acacia leaves</span></p>
-                            <p class="general-text>">Consumption: <span class="consumption">75 pounds</span></p>
-                        </div>
-                    </div>
-                </div>
+                
+                <x-animal-info 
+                    imgSrc="/images/giraffe-max_400x400px.jpg" 
+                    imgAlt="Giraffe Max face" 
+                    name="Max" 
+                    description="Max, the male giraffe, hails from the savannas of Kenya. At 8 years old, he enjoys a diet rich in acacia leaves, consuming around 75 pounds of foliage daily. Max is known for his gentle nature and impressive height, making him a favorite among visitors."
+                    race="Nubian giraffe"
+                    age="8 years"
+                    diet="Acacia leaves"
+                    consumption="75 pounds"
+                />
+                
             </section>
 
             <section class="container general-wrapper veto-com">
@@ -77,25 +65,15 @@
                     <h3>Veterinarian comments</h3>
                 </div>
                 <div class="row">
-                    <div class="veto-comment">
-                        <div>
-                            <figure class="avatar">
-                                <img src="/images/veto-female_400x400px.jpg" alt="Veterinarian avatar" />
-                            </figure>
-                            <div class="veto-info">
-                                <span>Dr. Sarah Thompson</span>
-                                <span>Veterinarian in charge of savanna animals.</span>
-                                <span class="comment-date">15/05/2024</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="general-text">
-                                "Max is a gentle giant with a calm disposition. His health is excellent, 
-                                and he thrives on his diet of fresh acacia leaves, which we ensure 
-                                is always plentiful."
-                            </p>
-                        </div>
-                    </div>
+
+                    <x-veto-comment 
+                        imgSrc="/images/veto-female_400x400px.jpg" 
+                        name="Dr. Sarah Thompson" 
+                        role="Veterinarian in charge of savanna animals." 
+                        date="15/05/2024" 
+                        comment="Max is a gentle giant with a calm disposition. His health is excellent, and he thrives on his diet of fresh acacia leaves, which we ensure is always plentiful."
+                    />
+
                 </div>
             </section>
 
