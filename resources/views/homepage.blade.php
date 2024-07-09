@@ -169,7 +169,7 @@
                 </x-card-wrapper>
                 <x-card-wrapper>
                     <x-card href="/exhibit/zebra" img="/images/amur-tiger-1x.jpg" title="Amur Tiger" text="Forest Exhibit" />
-                    <x-card href="{{ route('giraffemax') }}" img="/images/2giraffe-1x.jpg" title="Giraffe MAx" text="Savanna Exhibit" />
+                    <x-card href="{{ route('giraffemax') }}" img="/images/2giraffe-1x.jpg" title="Giraffe Max" text="Savanna Exhibit" />
                     <x-card href="/exhibit/desert-fox" img="/images/polar-bear-1x.jpg" title="Polar bear" text="Arctic Exhibit" />
                     <x-card href="/exhibit/lion" img="/images/female-lion-1x.jpg" title="Lion" text="Savanna Exhibit" />
                 </x-card-wrapper>
@@ -182,73 +182,41 @@
                 <div class="container row m-auto">
                     <div class="col-12 col-md-6">
                         <div class="row justify-content-center">
-                            <div id="reviewCarousel" class="carousel slide">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
+                            
+                        <div id="reviewCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                @foreach($reviews as $index => $review)
+                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                                         <div class="text-center">
                                             <div class="rating-container">
-                                            <ul class="star-list">
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                            </ul>
+                                                <ul class="star-list list-inline">
+                                                    <li class="list-inline-item"><i class=""></i></li>
+                                                    <li class="list-inline-item"><i class=""></i></li>
+                                                    <li class="list-inline-item"><i class=""></i></li>
+                                                    <li class="list-inline-item"><i class=""></i></li>
+                                                    <li class="list-inline-item"><i class=""></i></li>
+                                                </ul>
                                             </div>
                                             <div>
-                                                <span class="rating">3.3</span>
-                                                <p class="general-text">
-                                                    I had a fantastic experience at Arcadia Zoo! 
-                                                    The enclosures are spacious and beautifully 
-                                                    designed, and it's clear the animals are well cared for. 
-                                                    The staff is knowledgeable and friendly, making 
-                                                    the visit even more enjoyable. I especially loved the 
-                                                    Savanna exhibit with the giraffes and lions. 
-                                                    Definitely warth to visit!
-                                                </p>
-                                                <span>Sarah</span></br>
-                                                <span>01/20/2024</span>
+                                                <span class="rating">{{ $review->rating }}</span>
+                                                <p class="general-text">{{ $review->comment }}</p>
+                                                <span>{{ $review->pseudo }}</span><br/>
+                                                <span>{{ \Carbon\Carbon::parse($review->created_at)->format('m/d/Y') }}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="text-center">
-                                            <div class="rating-container">
-                                            <ul class="star-list">
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                            </ul>
-                                            </div>
-                                            <div>
-                                                <span class="rating">4.3</span>
-                                                <p class="general-text">
-                                                    I had a fantastic experience at Arcadia Zoo! 
-                                                    The enclosures are spacious and beautifully 
-                                                    designed, and it's clear the animals are well cared for. 
-                                                    The staff is knowledgeable and friendly, making 
-                                                    the visit even more enjoyable. I especially loved the 
-                                                    Savanna exhibit with the giraffes and lions. 
-                                                    Definitely warth to visit!
-                                                </p>
-                                                <span>John</span></br>
-                                                <span>11/05/2023</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="review-buttons">
-                                    <button class="btn btn-secondary" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
-                                        <i class="bi bi-arrow-left"></i>
-                                    </button>
-                                    <button class="btn btn-secondary " type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
-                                        <i class="bi bi-arrow-right"></i>
-                                    </button>
-                                </div>
+                                @endforeach
                             </div>
+                            <div class="review-buttons">
+                                <button class="btn btn-secondary" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                                    <i class="bi bi-arrow-left"></i>
+                                </button>
+                                <button class="btn btn-secondary" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         </div>
                     </div>
                     <div class="col-12 col-md-6 testimonial">
