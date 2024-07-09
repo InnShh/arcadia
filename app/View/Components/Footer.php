@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Timetable;
 
 class Footer extends Component
 {
@@ -21,6 +22,7 @@ class Footer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.footer');
+        $timetables = Timetable::all();
+        return view('components.footer',compact('timetables'));
     }
 }
