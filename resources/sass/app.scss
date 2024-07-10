@@ -500,12 +500,13 @@ footer {
             @include general-link-style($white-color);
         }
     }
-    span {
+    span, p {
             color: white;
             text-decoration: none;
             text-align: center;
             font-size: 13px;
             margin-top: $one-space;
+            margin-bottom: 0;
         }
 }
 

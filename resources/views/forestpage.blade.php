@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="{{ asset('favicon.ico.svg') }}" type="image/svg+xml">
+
         <title>Forest Exhibit</title>
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
