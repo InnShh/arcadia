@@ -39,3 +39,22 @@ INSERT INTO timetables VALUES(4, 4, '09:00','21:00');
 INSERT INTO timetables VALUES(5, 5, '09:00','21:00');
 INSERT INTO timetables VALUES(6, 6, '09:00','21:00');
 INSERT INTO timetables VALUES(7, 7, '09:00','21:00');
+CREATE TABLE activities (
+    id INTEGER PRIMARY KEY autoincrement,
+    image VARCHAR(255),
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    created_at DATETIME,
+    updated_at DATETIME
+);
+INSERT INTO activities (id, image, name, description, created_at, updated_at) VALUES
+(1, NULL, 'intro', 'Arcadia Zoo offers a range of exciting services: enjoy delicious dining options, take free guided tours of the exhibits, and explore the zoo on a charming small train. These features ensure a fun and memorable experience for every visitor.', NULL, NULL);
+
+INSERT INTO activities (id, image, name, description, created_at, updated_at) VALUES
+(2, '/images/arcadia-express.png', 'All Aboard the Arcadia Express!', 'Experience Arcadia Zoo like never before with our charming small train tour, the Arcadia Express. This delightful journey takes you through the heart of the zoo, offering a unique perspective on our diverse Exhibits and incredible animals. Relax and enjoy the scenic ride as our knowledgeable guide shares fascinating facts and stories about the zoo''s residents. Perfect for families and visitors of all ages, the Arcadia Express provides a fun and convenient way to explore the zoo. Don''t miss this enchanting adventure that adds a touch of magic to your visit!', NULL, NULL);
+
+INSERT INTO activities (id, image, name, description, created_at, updated_at) VALUES
+(3, '/images/eating-estaurant-1x.jpg', 'Savor the Flavors at Arcadia', 'Indulge in the culinary delights at Arcadia Zoo with our "Savor the Flavors" dining options. Enjoy a variety of mouth-watering meals at our on-site restaurants, perfect for satisfying any craving. From gourmet sandwiches and fresh salads to kid-friendly favorites like burgers and fries, there''s something delicious for everyone. Relax in our cozy café with views of nearby animal enclosures, or grab a quick snack from one of our convenient kiosks. We also offer vegetarian, vegan, and gluten-free options to cater to all dietary needs. Make your visit to Arcadia Zoo even more enjoyable with a memorable dining experience!', NULL, NULL);
+
+INSERT INTO activities (id, image, name, description, created_at, updated_at) VALUES
+(4, '/images/feeding-giraffe-1x.jpg', 'Explore with the Arcadia Adventure Tour', 'Enhance your visit with the Arcadia Adventure Tour, our complimentary guided tour of the exhibits. Join our expert guides as they lead you through the zoo, sharing fascinating insights and behind-the-scenes stories about our incredible animals. Discover unique facts about each species, their habitats, and conservation efforts. Whether you''re a first-time visitor or a regular, the Arcadia Adventure Tour offers a fresh and enriching experience every time. Don''t miss this chance to explore and learn with us!', NULL, NULL);
