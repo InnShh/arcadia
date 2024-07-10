@@ -7,7 +7,7 @@ window.addEventListener("load", function() {
     const heroContent = document.querySelector('.hero-content');
     const frontL = document.querySelector('.lion');
   
-    // Ensure initial state is set before applying the animation
+    //initial state 
     hero.style.transform = 'scale(1.1)';
     hero.style.opacity = '0';
   
@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
     heroContent.style.transform = 'translateY(20px)';
     heroContent.style.opacity = '0';
     
-    //Apply the animation in the next frame
+    //the next frame
     requestAnimationFrame(() => {
       hero.style.transform = 'scale(1)';
       hero.style.opacity = '1';
@@ -59,13 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
     const ratingContainers = document.querySelectorAll('.rating-container');
     
-    //loop over the i
     ratingContainers.forEach(container => {
         const ratingElement = container.parentElement.querySelector('.rating');
         const ratingValue = parseFloat(ratingElement.textContent);
         const starElements = container.querySelectorAll('i');
         
-        //adding the class according its value
         for (let i = 0; i < 5; i++) {
             if (ratingValue >= i + 1) {
                 starElements[i].classList.add('star-fill');
@@ -114,3 +112,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+//testimonial form to send
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.star-list li i');
+    const ratingInput = document.getElementById('rating');
+    const testimonialForm = document.getElementById('testimonialForm');
+    const messageTextarea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.getAttribute('data-value');
+            ratingInput.value = rating;
+
+            stars.forEach(s => s.classList.remove('filled-star'));
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.add('filled-star');
+            }
+        });
+    });
+
+    messageTextarea.addEventListener('input', function() {
+        const length = messageTextarea.value.length;
+        charCount.textContent = `${length}/320`;
+    });
+
+    testimonialForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (messageTextarea.value.length > 320) {
+            alert('Your message is too long. Please keep it under 320 characters.');
+            return;
+        }
+
+        const formData = new FormData(testimonialForm);
+
+        fetch(reviewsStoreUrl, { // Use the variable here
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                alert('Thank you for your testimonial!');
+                testimonialForm.reset();
+                stars.forEach(s => s.classList.remove('filled-star'));
+                charCount.textContent = '0/320';
+            } else {
+                alert('There was an error submitting your testimonial. Please try again.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
+

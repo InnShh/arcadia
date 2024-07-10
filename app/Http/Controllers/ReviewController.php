@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
 
 class ReviewController extends Controller
 {
-    function store(Request $request) {
+    public function store(Request $request) {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'message' => 'required|string',
+            'message' => 'required|string|max:320',
             'rating' => 'required|integer|min:1|max:5',
         ]);
 

@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <link rel="icon" href="{{ asset('favicon.ico.svg') }}" type="image/svg+xml">
 
         <title>ARCADIA</title>
@@ -223,21 +225,22 @@
                         <div class="row">
                             <h3>Share your testimonial</h3>
                         </div>
-                        <div class="row">
-                            <ul class="star-list">
-                                <li class="list-inline-item"><i class="bi bi-star" data-value="1"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star" data-value="2"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star" data-value="3"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star" data-value="4"></i></li>
-                                <li class="list-inline-item"><i class="bi bi-star" data-value="5"></i></li>
-                            </ul>
-                            <input type="hidden" name="rating" id="rating" value="0">
-                        </div>
                         <div class="testimonial-form">
-                            <form>
-                                <input class="form-control w-chbl" type="text" placeholder="Your name" required>
-                                <textarea class="form-control w-chbl" type="text" rows="6" placeholder="Your message" required></textarea>
-                                <button type="button" class="btn btn-outlined w-chbl">S U B M I T</button>
+                            <form id="testimonialForm">
+                                <div class="row">
+                                    <ul class="star-list">
+                                        <li class="list-inline-item"><i class="bi bi-star" data-value="1"></i></li>
+                                        <li class="list-inline-item"><i class="bi bi-star" data-value="2"></i></li>
+                                        <li class="list-inline-item"><i class="bi bi-star" data-value="3"></i></li>
+                                        <li class="list-inline-item"><i class="bi bi-star" data-value="4"></i></li>
+                                        <li class="list-inline-item"><i class="bi bi-star" data-value="5"></i></li>
+                                    </ul>
+                                    <input type="hidden" name="rating" id="rating" value="0">
+                                </div>
+                                <input class="form-control w-chbl" type="text" name="name" placeholder="Your name" autocomplete required>
+                                <div id="charCount">0/320</div>
+                                <textarea class="form-control w-chbl" name="message" type="text" id="message" rows="6" placeholder="Your testimonial, 320 characters max" maxlength="320" required></textarea>
+                                <button type="submit" class="btn btn-outlined w-chbl">S U B M I T</button>
                             </form>
                         </div>
                     </div>
@@ -333,5 +336,10 @@
             <x-donate-contact />
         </main>
         <x-footer />
+
+        <script>
+            const reviewsStoreUrl = '{{ route("reviews.store") }}';
+        </script>
+
     </body>
 </html>
