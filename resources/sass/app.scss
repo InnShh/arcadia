@@ -56,6 +56,16 @@ h5.second-level-title {
 .card {
     @include card-style;
 }
+section.general-wrapper .card {
+    &:hover {
+        transform: scale(1.025);
+        transition: transform ease 0.5s;
+        box-shadow: 0px 15px 20px rgba($secondary-accent-color, .05);
+    }
+}
+input, button {
+    border-radius: 0 !important;
+}
 figure.img-container {
     width: 100%;
     > img {
@@ -578,6 +588,39 @@ footer {
     }
     }
     
+//Dashboard
+body.dashboard {
+    * {
+        font-family: $text-font;
+    }
+}
+nav.navbar {
+    background-color: $wheat-color;
+}
+a {
+    @include general-link-style($black-color);
+}
+.btn.btn-primary {
+    background-color: $accent-color;
+    color: $black-color;
+    border: solid 1px $accent-color;
+    &:hover {
+        background-color: $black-color;
+        color: $white-color;
+        border: solid 1px $black-color;
+    }
+}
+.btn.btn-link {
+    color: $accent-color;
+    &:hover{
+        color: $black-color;
+    }
+}
+.form-check-input:checked {
+    background-color: $accent-color;
+    border-color: $accent-color;
+}
+
 
 
 //global media

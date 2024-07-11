@@ -104,7 +104,7 @@
 }
 
 @mixin card-style {
-    @include card-any-style(.65);
+    @include card-any-style(.13);
     > a {
         text-decoration: none;
     }
@@ -118,11 +118,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-    &:hover {
-        transform: scale(1.05);
-        transition: transform ease 0.5s;
-        box-shadow: 0px 15px 20px rgba($secondary-accent-color, .35);
     }
 }
 
