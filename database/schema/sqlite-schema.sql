@@ -129,3 +129,30 @@ INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
 (8, 3, 'wolf', 'Wolf',  NULL,NULL);
 INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
 (9, 3, 'red-deer', 'Red Deer',  NULL,NULL);
+
+CREATE TABLE IF NOT EXISTS animal_images (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    animal_id INTEGER NOT NULL,
+    image_path VARCHAR(255),
+    created_at DATETIME,
+    updated_at DATETIME
+);
+
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(1, 1, '/images/zebras-x1.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(2, 2, '/images/2giraffe-1x.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(3, 3, '/images/desert-fox-1x.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(4, 4, '/images/female-lion-1x.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(5, 5, '/images/polar-bear-1x.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(6, 6, '/images/arctic-fox-x1.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(7, 7, '/images/amur-tiger-1x.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(8, 8, '/images/wolf-x1.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(9, 9, '/images/red-deer-1x.jpg',  NULL,NULL);
