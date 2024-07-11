@@ -67,9 +67,24 @@ CREATE TABLE IF NOT EXISTS exhibits (
     updated_at DATETIME
 );
 
-INSERT INTO exhibits (name, description, created_at, updated_at) VALUES
-('Savanna', 'The Savanna habitat at Arcadia Zoo spans a vast area, meticulously designed to mimic the open grasslands of Africa. Giraffes, zebras, and antelopes roam freely, creating a dynamic and authentic savanna experience for both the animals and visitors. The habitat features native plants and waterholes, ensuring a realistic and enriching environment. Visitors can observe the natural behaviors and interactions of these majestic species from specially designed viewing platforms. This immersive habitat underscores Arcadia Zoo’s commitment to conservation and the preservation of wildlife in their natural settings.', NULL,NULL);
-INSERT INTO exhibits (name, description, created_at, updated_at) VALUES
-('Arctic Exhibit', 'At our zoo''s Arctic exhibit, immerse yourself in a world of snow and ice, home to fascinating creatures like polar bears, seals, and Arctic foxes. Witness these animals'' incredible adaptations to their harsh environment, from thick fur to agile hunting skills. Learn about the delicate balance of the Arctic ecosystem and the conservation efforts dedicated to preserving these vital habitats. Engage in interactive displays that showcase the beauty and challenges of Arctic life, inspiring a deeper understanding and commitment to wildlife conservation.', NULL,NULL);
-INSERT INTO exhibits (name, description, created_at, updated_at) VALUES
-('Forest Exhibit', 'The Forest Exhibit at Arcadia Zoo invites you to explore the lush greenery and diverse wildlife where nature''s wonders come alive. Immerse yourself in the serene ambiance, home to a variety of birds, mammals, and unique plant species. Discover the captivating beauty and biodiversity of the forest ecosystem, perfect for nature enthusiasts of all ages. Witness the harmonious coexistence of flora and fauna, a tranquil retreat that highlights the zoo''s commitment to conservation.', NULL,NULL);
+INSERT INTO exhibits (id, name, description, created_at, updated_at) VALUES
+(1, 'Savanna', 'The Savanna habitat at Arcadia Zoo spans a vast area, meticulously designed to mimic the open grasslands of Africa. Giraffes, zebras, and antelopes roam freely, creating a dynamic and authentic savanna experience for both the animals and visitors. The habitat features native plants and waterholes, ensuring a realistic and enriching environment. Visitors can observe the natural behaviors and interactions of these majestic species from specially designed viewing platforms. This immersive habitat underscores Arcadia Zoo’s commitment to conservation and the preservation of wildlife in their natural settings.', NULL,NULL);
+INSERT INTO exhibits (id, name, description, created_at, updated_at) VALUES
+(2, 'Arctic Exhibit', 'At our zoo''s Arctic exhibit, immerse yourself in a world of snow and ice, home to fascinating creatures like polar bears, seals, and Arctic foxes. Witness these animals'' incredible adaptations to their harsh environment, from thick fur to agile hunting skills. Learn about the delicate balance of the Arctic ecosystem and the conservation efforts dedicated to preserving these vital habitats. Engage in interactive displays that showcase the beauty and challenges of Arctic life, inspiring a deeper understanding and commitment to wildlife conservation.', NULL,NULL);
+INSERT INTO exhibits (id, name, description, created_at, updated_at) VALUES
+(3, 'Forest Exhibit', 'The Forest Exhibit at Arcadia Zoo invites you to explore the lush greenery and diverse wildlife where nature''s wonders come alive. Immerse yourself in the serene ambiance, home to a variety of birds, mammals, and unique plant species. Discover the captivating beauty and biodiversity of the forest ecosystem, perfect for nature enthusiasts of all ages. Witness the harmonious coexistence of flora and fauna, a tranquil retreat that highlights the zoo''s commitment to conservation.', NULL,NULL);
+
+CREATE TABLE IF NOT EXISTS exhibit_images (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    exhibit_id INTEGER NOT NULL,
+    image_path VARCHAR(255),
+    created_at DATETIME,
+    updated_at DATETIME
+);
+
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(1, 1, '/images/desert-fox-1x.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(2, 2, '/images/polar-bear-1x.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(3, 3, '/images/wolf-x1.jpg', NULL,NULL);
