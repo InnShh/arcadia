@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class AnimalImage extends Model
 {
     use HasFactory;
-    public function exhibit(): BelongsTo
+    public function animal(): BelongsTo
     {
         return $this->belongsTo(Animal::class, 'animal_id');
     }
