@@ -616,10 +616,14 @@ a {
         color: $black-color;
     }
 }
+form.login-form {
+    width: 100%;
+}
 .form-check-input:checked {
     background-color: $accent-color;
     border-color: $accent-color;
 }
+
 
 
 
