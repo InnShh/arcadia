@@ -88,3 +88,16 @@ INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) 
 (2, 2, '/images/polar-bear-1x.jpg', NULL,NULL);
 INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
 (3, 3, '/images/wolf-x1.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(4, 1, '/images/wo-giraffes-x1.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(5, 2, '/images/penguin-x1.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(6, 3, '/images/amur-tiger-1x.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(7, 1, '/images/zebras-x1.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(8, 2, '/images/seals-x1.jpg', NULL,NULL);
+INSERT INTO exhibit_images (id, exhibit_id, image_path, created_at, updated_at) VALUES
+(9, 3, '/images/red-deer-1x.jpg', NULL,NULL);
+
