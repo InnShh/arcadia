@@ -250,7 +250,7 @@
         </section>
         <section class="container general-wrapper activities" id="activities-all">
             <div class="row">
-                <h1 class="text-title">Activities</h1>
+                <h2 class="text-title">Activities</h2>
                 <p class="general-text">
                     Arcadia Zoo offers a range of exciting services:
                     enjoy delicious dining options, take free guided tours
