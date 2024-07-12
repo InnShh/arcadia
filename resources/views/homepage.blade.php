@@ -56,79 +56,26 @@
         </section>
 
         <section class="container general-wrapper" id="all-exhibits" style="padding:0;">
+
             <div id="carouselExhibitAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="{{ route('savanna') }}">
-                            <img src="/images/desert-fox-1x.jpg" srcset="/images/desert-fox-1x.jpg 1x, /images/desert-fox-2x.jpg 2000w" class="d-block w-100" alt="Savanna living fox">
+                    @foreach($exhibits as $index => $exhibit)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <a href="#{{ $exhibit->slug }}">
+                            @if($exhibit->images->isNotEmpty())
+                            <img src="{{ $exhibit->images->first()->image_path }}" class="d-block w-100" alt="{{ $exhibit->title }}">
+                            @endif
                             <div class="bg-gradient">
                                 <div class="carousel-caption">
-                                    <h5 class="second-level-title">Savanna</h5>
+                                    <h5 class="second-level-title">{{ $exhibit->title }}</h5>
                                     <p class="general-text">
-                                        The Savanna habitat at Arcadia Zoo spans a
-                                        vast area, meticulously designed to mimic
-                                        the open grasslands of Africa. Giraffes, zebras,
-                                        and antelopes roam freely, creating a dynamic
-                                        and authentic savanna experience for
-                                        both the animals and visitors. The habitat
-                                        features native plants and waterholes, ensuring
-                                        a realistic and enriching environment. Visitors
-                                        can observe the natural behaviors and
-                                        interactions of these majestic species from
-                                        specially designed viewing platforms.
-                                        This immersive habitat underscores
-                                        Arcadia Zoo’s commitment to conservation
-                                        and the
-                                        preservation of wildlife in their
-                                        natural settings.
+                                        {{ $exhibit->description }}
                                     </p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="carousel-item">
-                        <a href="{{ route('arctic') }}">
-                            <img src="/images/polar-bear-1x.jpg" srcset="/images/polar-bear-1x.jpg, /images/polar-bear-2x.jpg 2000w" class="d-block w-100" alt="Savanna living fox">
-                            <div class="bg-gradient">
-                                <div class="carousel-caption">
-                                    <h5 class="second-level-title">Arctic Exhibit</h5>
-                                    <p class="general-text">
-                                        At our zoo's Arctic exhibit,
-                                        immerse yourself in a world of snow and ice,
-                                        home to fascinating creatures like polar bears,
-                                        seals, and Arctic foxes. Witness these animals'
-                                        incredible adaptations to their harsh environment,
-                                        from thick fur to agile hunting skills. Learn about
-                                        the delicate balance of the Arctic ecosystem and
-                                        the conservation efforts dedicated to preserving
-                                        these vital habitats. Engage in interactive
-                                        displays that showcase the beauty and challenges
-                                        of Arctic life, inspiring a deeper understanding
-                                        and commitment to wildlife conservation.
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{ route('forest') }}">
-                            <img src="/images/wolf-x1.jpg" class="d-block w-100" alt="Forest living wolf">
-                            <div class="bg-gradient">
-                                <div class="carousel-caption">
-                                    <h5 class="second-level-title">Forest Exhibit</h5>
-                                    <p class="general-text">
-                                        The Forest Exhibit at Arcadia Zoo invites you to explore
-                                        the lush greenery and diverse wildlife where nature's wonders come alive.
-                                        Immerse yourself in the serene ambiance, home to a variety of birds,
-                                        mammals, and unique plant species. Discover the captivating beauty
-                                        and biodiversity of the forest ecosystem, perfect for nature
-                                        enthusiasts of all ages. Witness the harmonious coexistence of flora and fauna,
-                                        a tranquil retreat that highlights the zoo's commitment to conservation.
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExhibitAutoplaying" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -139,6 +86,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
         </section>
 
         <section class="container-fluid general-wrapper promo p-0 m-0">
