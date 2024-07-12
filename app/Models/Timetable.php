@@ -4,6 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $day_of_week
+ * @property string|null $opening_time
+ * @property string|null $closing_time
+ * @property-read string $day_of_week_human
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereClosingTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereDayOfWeek($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereOpeningTime($value)
+ * @mixin \Eloquent
+ */
 class Timetable extends Model
 {
     protected $guarded = [];
