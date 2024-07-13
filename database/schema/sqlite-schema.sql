@@ -107,28 +107,45 @@ CREATE TABLE IF NOT EXISTS animals (
     exhibit_id INTEGER NOT NULL,
     slug VARCHAR(255),
     name VARCHAR(255),
+    avatar_image_path VARCHAR(255),
+    title VARCHAR(255),
+    title_description TEXT,
+    description TEXT,
+    race VARCHAR(255),
+    age VARCHAR(255),
+    diet VARCHAR(255),
+    consumption VARCHAR(255),
     created_at DATETIME,
     updated_at DATETIME
 );
 
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(1, 1, 'zebra', 'Zebra',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(2, 1, 'giraffe-max', 'Giraffe Max',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(3, 1, 'desert-fox', 'Desert Fox',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(4, 1, 'lion', 'Lion',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(5, 2, 'polar-bear', 'Polar bear',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(6, 2, 'arctic-fox', 'Arctic Fox',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(7, 3, 'amur-tiger', 'Amur Tiger',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(8, 3, 'wolf', 'Wolf',  NULL,NULL);
-INSERT INTO animals (id, exhibit_id, slug, name, created_at, updated_at) VALUES
-(9, 3, 'red-deer', 'Red Deer',  NULL,NULL);
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(1, 1, 'zebra-blue', 'Zebra Blue', '/images/Zebra_400x400px.jpg', 'Zebra Blue - striking beauty', 'Zebras are iconic members of the animal kingdom, known for their distinctive black and white stripes which are unique to each individual. They have excellent eyesight and hearing, which help them detect predators. Zebras are highly social animals and often form strong bonds with each other, living in large herds for protection.</br></br>Arcadia Zoo is home to one stunning zebra, a female named Blue, living in our expansive Grasslands exhibit.', 'Blue, the female zebra, is a striking sight with her vivid black and white stripes. She comes from the grasslands of Tanzania and is 5 years old. Blue thrives on a varied diet of grasses and herbs, consuming around 20 pounds of vegetation daily. Her playful and social nature makes her a delight for visitors, especially children.', 'Plains zebra', '5 years', 'Grasses and herbs', '20 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(2, 1, 'giraffe-max', 'Giraffe Max', '/images/giraffe-max_400x400px.jpg', 'Giraffe Max - majestic giant', 'Giraffes are true marvels of the animal kingdom. They have hearts the size of basketballs. Special one-way valves and elastic blood vessels allow giraffes to bend over for a drink without having their enormous blood pressure negatively affect their brains. Giraffes are constantly on alert, and only sleep about 20 minutes per night.</br></br>Arcadia Zoo is home to one magnificent giraffe, a male named Max, living in our spacious Savanna exhibit.', 'Max, the male giraffe, hails from the savannas of Kenya. At 8 years old, he enjoys a diet rich in acacia leaves, consuming around 75 pounds of foliage daily. Max is known for his gentle nature and impressive height, making him a favorite among visitors.', 'Nubian giraffe', '8 years', 'Acacia leaves', '75 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(3, 1, 'desert-fox-sandy', 'Desert Fox Sandy', '/images/sand-fox_400x400px.jpg', 'Desert Fox Sandy - swift survivor', 'Desert foxes, or fennec foxes, are the smallest of all canids and are perfectly adapted to desert life with their large ears that dissipate heat. They have a keen sense of hearing to locate prey underground and are primarily nocturnal, hunting during the cool nights. Fennec foxes are social animals that live in burrows and have a varied diet including insects, small mammals, and fruits.</br></br>Arcadia Zoo is home to one charming desert fox, a female named Sandy, living in our Desert Dunes exhibit.', 'Sandy, the female desert fox, originates from the arid deserts of North Africa. At 3 years old, she is a small but agile hunter, thriving on a diet of insects, small mammals, and fruits, consuming around 2 pounds daily. Sandy is known for her large ears and swift movements, making her a fascinating and endearing sight for visitors.', 'Fennec fox', '3 years', 'Insects, small mammals, and fruits', '2 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(4, 1, 'lion-nala', 'Lion Nala', '/images/female-lion_400x400px.jpg', 'Lion Nala - regal huntress', 'Lions are known as the kings of the jungle, with their powerful build and social structure centered around pride dynamics. Female lions, like Nala, are the primary hunters and work together to bring down large prey. Lions are unique among big cats for their social behavior and live in groups called prides, which consist of related females and their offspring, and a few males.</br></br>Arcadia Zoo is home to one majestic lioness, named Nala, reigning over our Savanna Pride exhibit.', 'Nala, the female lion, comes from the savannas of Africa. At 5 years old, she is a powerful and graceful predator, enjoying a diet of meat, primarily consisting of wildebeest and zebras, consuming around 12 pounds daily. Nala is known for her fierce yet nurturing nature, and her regal presence makes her a favorite among zoo visitors.', 'African lion', '5 years', 'Meat (wildebeest and zebras)', '12 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(5, 2, 'polar-bear-mishka', 'Polar Bear Mishka', '/images/polar-bear_400x400px.jpg', 'Polar Bear Mishka - powerful swimmer', 'Polar bears are the largest land carnivores and are superbly adapted to life in the Arctic. They have a thick layer of blubber and dense fur that keep them warm in the freezing temperatures. Polar bears are excellent swimmers and can cover long distances in search of food. They primarily hunt seals, using their sharp sense of smell to detect them from miles away.</br></br>Arcadia Zoo is home to one impressive polar bear, a female named Mishka, enjoying our icy Polar Bear Cove exhibit.', 'Mishka, the female polar bear, originates from the Arctic regions of Canada. At 9 years old, she is a magnificent and powerful swimmer, enjoying a diet of seals and fish, consuming around 30 pounds daily. Mishka is known for her thick, white fur and her playful yet dominant personality, making her a standout attraction at the zoo.', 'Polar bear', '9 years', 'Seals and fish', '30 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(6, 2, 'arctic-fox-clue', 'Arctic Fox Clue', '/images/arctic-fox_400x400px.jpg', 'Arctic Fox Clue - playful trickster', 'Arctic foxes are well-adapted to life in the Arctic tundra, with their thick fur providing excellent insulation against the cold. They are known for their ability to change the color of their fur with the seasons, from white in the winter to brown or gray in the summer. Arctic foxes are opportunistic feeders and have keen hearing to detect prey under the snow.</br></br>Arcadia Zoo is home to one delightful Arctic fox, a male named Clue, residing in our Arctic Wonderland exhibit.', 'Clue, the male Arctic fox, comes from the icy tundras of the Arctic. At 4 years old, he has a thick, white fur coat that blends perfectly with the snow. Clue thrives on a diet of small mammals and birds, consuming around 3 pounds daily. Known for his playful antics and adaptability to extreme cold, Clue is a favorite among visitors, especially during the winter months.', 'Arctic fox', '4 years', 'Small mammals and birds', '3 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(7, 3, 'amur-tiger-rex', 'Amur Tiger Rex', '/images/tiger_400x400px.jpg', 'Amur Tiger Rex - solitary hunter', 'Amur tigers, also known as Siberian tigers, are the largest cats in the world and are known for their strength and agility. They have thick fur to withstand the harsh, cold climates of their natural habitat. Amur tigers are solitary animals and have large territories that they defend aggressively.</br></br>Arcadia Zoo is home to one magnificent Amur tiger, a male named Rex, living in our Snowy Taiga exhibit.', 'Rex, the male Amur tiger, hails from the snowy regions of Eastern Russia. At 7 years old, he is a powerful and agile hunter, enjoying a diet rich in meat, consuming around 15 pounds daily. Rex is known for his striking orange coat with black stripes and his solitary, majestic demeanor, making him a highlight of the zoo.', 'Amur tiger', '7 years', 'Meat', '15 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(8, 3, 'wolf-bro', 'Wolf Bro', '/images/wolf_400x400px.jpg', 'Wolf Bro - commanding alpha', 'Wolves are remarkable for their intelligence, social structure, and adaptability. They communicate with each other using a range of vocalizations, body language, and scent marking. Wolves live and hunt in packs, which are typically family units. They are known for their endurance and ability to cover great distances when hunting.</br></br>Arcadia Zoo is home to one majestic wolf, a male named Bro, leading our Wolf Forest exhibit.', 'Bro, the alpha male wolf, originates from the forests of North America. At 6 years old, he is a robust and majestic predator, relying on a diet of meat, primarily deer and small mammals, consuming around 10 pounds daily. Known for his intelligence and pack-leading abilities, Bro captivates visitors with his piercing eyes and commanding presence.', 'Grey wolf', '6 years', 'Meat (deer and small mammals)', '10 pounds', NULL, NULL);
+
+INSERT INTO animals (id, exhibit_id, slug, name, avatar_image_path, title, title_description, description, race, age, diet, consumption, created_at, updated_at) VALUES
+(9, 3, 'red-deer-buck', 'Red Deer Buck', '/images/deer_400x400px.jpg', 'Red Deer Buck - regal presence', 'Red deer are one of the largest deer species and are known for their impressive antlers, which are shed and regrown annually. They are social animals and often form groups called hinds, led by a dominant male. Red deer are herbivores, feeding on grasses, leaves, and twigs. During the rutting season, males use their antlers in dramatic displays to compete for mates.</br></br>Arcadia Zoo is home to one majestic red deer, a male named Buck, roaming our Forest Glade exhibit.', 'Buck, the male red deer, hails from the lush forests of Europe. At 6 years old, he is a majestic presence with his impressive antlers. Buck enjoys a diet of grasses, leaves, and twigs, consuming around 10 pounds of foliage daily. Known for his gentle demeanor and striking appearance, Buck captivates visitors with his regal stance and graceful movements.', 'Red deer', '6 years', 'Grasses, leaves, and twigs', '10 pounds', NULL, NULL);
+
 
 CREATE TABLE IF NOT EXISTS animal_images (
     id INTEGER PRIMARY KEY autoincrement NOT NULL,
@@ -156,3 +173,21 @@ INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VA
 (8, 8, '/images/wolf-x1.jpg',  NULL,NULL);
 INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
 (9, 9, '/images/red-deer-1x.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(10, 1, '/images/zebra-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(11, 2, '/images/wo-giraffes-x1.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(12, 3, '/images/sand-fox-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(13, 4, '/images/lion-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(14, 5, '/images/bear-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(15, 6, '/images/arctic-fox-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(16, 7, '/images/tiger-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(17, 8, '/images/wolf-x1-sc.jpg',  NULL,NULL);
+INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
+(18, 9, '/images/red-deer-x1-sc.jpg',  NULL,NULL);
