@@ -61,13 +61,13 @@
                 <div class="carousel-inner">
                     @foreach($exhibits as $index => $exhibit)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <a href="#{{ $exhibit->slug }}">
+                        <a href="{{ route('exhibits.show', ['exhibit' => $exhibit->slug]) }}">
                             @if($exhibit->images->isNotEmpty())
                             <img src="{{ $exhibit->images->first()->image_path }}" class="d-block w-100" alt="{{ $exhibit->title }}">
                             @endif
                             <div class="bg-gradient">
                                 <div class="carousel-caption">
-                                    <h5 class="second-level-title">{{ $exhibit->title }}</h5>
+                                    <h5 class="second-level-title">{{ $exhibit->name }}</h5>
                                     <p class="general-text">
                                         {{ $exhibit->description }}
                                     </p>

@@ -35,4 +35,8 @@ class Exhibit extends Model
     {
         return $this->hasMany(ExhibitImage::class, 'exhibit_id');
     }
+    public function animals(): HasMany
+    {
+        return $this->hasMany(Animal::class, 'exhibit_id');
+    }
 }

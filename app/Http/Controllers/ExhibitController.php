@@ -37,7 +37,8 @@ class ExhibitController extends Controller
      */
     public function show(Exhibit $exhibit)
     {
-        //
+        $exhibit->load(['images', 'animals.images']);
+        return view('exhibits.show', compact('exhibit'));
     }
 
     /**
