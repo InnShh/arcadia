@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData(testimonialForm);
 
-        fetch(reviewsStoreUrl, { // Use the variable here
+        fetch(reviewsStoreUrl, {
             method: 'POST',
             body: formData,
             headers: {
@@ -172,6 +172,60 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => console.error('Error:', error));
+    });
+});
+
+// Contact form
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('submit-contact').addEventListener('click', function() {
+
+        const firstName = document.getElementById('name-contact').value.trim();
+        const lastName = document.getElementById('nameL-contact').value.trim();
+        const telephone = document.getElementById('tel-contact').value.trim();
+        const email = document.getElementById('mail-contact').value.trim();
+        const message = document.getElementById('mess-contact').value.trim();
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!firstName || !lastName || !telephone || !email || !message) {
+            alert('All fields are required.');
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        const formData = {
+            firstName: firstName,
+            lastName: lastName,
+            telephone: telephone,
+            email: email,
+            message: message
+        };
+
+        console.log('Form Data:', JSON.stringify(formData));
+
+        fetch(sendMessageUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('Your message has been sent successfully!');
+
+            document.getElementById('contactForm').reset();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('There was an error sending your message. Please try again later.');
+        });
     });
 });
 

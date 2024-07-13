@@ -487,6 +487,9 @@ main {
             height: auto;
             color: $black-color;
             font-size: 13px;
+            &::placeholder {
+                color: $black-color;
+            }
         }
     }
 }

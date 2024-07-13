@@ -7,6 +7,7 @@ use App\Models\Review;
 use App\Models\Activity;
 use App\Models\Animal;
 use App\Models\Exhibit;
+use Mail;
 
 class HomePageController extends Controller
 {
@@ -32,5 +33,33 @@ class HomePageController extends Controller
         $hasMore = $offset + $limit < $totalAnimals;
         $html = view('partials.animal-cards', compact('animals'))->render();
         return response()->json(['html' => $html, 'hasMore' => $hasMore]);
+    }
+    public function sendMessage(Request $request)
+    {
+        $validatedData = $request->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'telephone' => 'nullable|string|max:15',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string'
+        ]);
+        $emailData = [
+            'firstName' => $validatedData['firstName'],
+            'lastName' => $validatedData['lastName'],
+            'telephone' => $validatedData['telephone'],
+            'email' => $validatedData['email'],
+            'message' => $validatedData['message']
+        ];
+        Mail::send([], [], function ($message) use ($emailData) {
+            $message->to(config('mail.from.address'))
+                ->subject('Contact Form Message')
+                ->text('First Name: ' . $emailData['firstName'] . "\n" .
+                    'Last Name: ' . $emailData['lastName'] . "\n" .
+                    'Telephone: ' . $emailData['telephone'] . "\n" .
+                    'Email: ' . $emailData['email'] . "\n" .
+                    'Message: ' . $emailData['message']);
+        });
+
+        return response()->json(['success' => 'Your message has been sent successfully!']);
     }
 }

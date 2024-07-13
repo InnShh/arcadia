@@ -7,6 +7,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ReviewController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
+Route::post('/send-message', [HomePageController::class, 'sendMessage'])->name('homepage.sendmessage');
 Route::post('/load-more-animals', [HomePageController::class, 'loadMoreAnimals'])->name('homepage.load-more-animals');
 Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Auth::routes();
