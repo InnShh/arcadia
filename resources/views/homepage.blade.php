@@ -59,8 +59,8 @@
 
             <div id="carouselExhibitAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach($exhibits as $index => $exhibit)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    @foreach($exhibits as $exhibit)
+                    <div class="carousel-item  @if ($loop->first) active @endif">
                         <a href="{{ route('exhibits.show', ['exhibit' => $exhibit->slug]) }}">
                             @if($exhibit->images->isNotEmpty())
                             <img src="{{ $exhibit->images->first()->image_path }}" class="d-block w-100" alt="{{ $exhibit->title }}">
