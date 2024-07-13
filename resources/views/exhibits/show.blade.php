@@ -46,13 +46,7 @@
         </section>
 
         <section class="container-fluid general-wrapper animals exhibit m-0">
-            <x-card-wrapper>
-                @foreach ($exhibit->animals as $animal)
-                @foreach ($animal->images as $animalImage)
-                <x-card href="{{ route('exhibits.show', ['exhibit' => $animal->slug]) }}" img="{{ $animalImage->image_path }}" title="{{ $animal->name }}" text="{{ $exhibit->name }} Exhibit" />
-                @endforeach
-                @endforeach
-            </x-card-wrapper>
+            @include('partials.animal-cards', ['animals' => $exhibit->animals])
         </section>
 
         <x-donate-contact />

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAnimalRequest;
 use App\Http\Requests\UpdateAnimalRequest;
 use App\Models\Animal;
+use App\Models\Exhibit;
 
 class AnimalController extends Controller
 {
@@ -35,9 +36,10 @@ class AnimalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Animal $animal)
+    public function show(Exhibit $exhibit, Animal $animal)
     {
-        //
+        $animal->load(['images', 'exhibit.images']);
+        return view('animals.show', compact('animal'));
     }
 
     /**

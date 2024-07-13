@@ -1,0 +1,1 @@
+@php dump($animal->toJson(JSON_PRETTY_PRINT)) @endphp
