@@ -6,9 +6,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th class="dash-activity-id">ID</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th class="dash-activity-id">Description</th>
                         <th>Animals Count</th>
                         <th>Actions</th>
                     </tr>
@@ -16,9 +16,9 @@
                 <tbody>
                     @foreach ($exhibits as $exhibit)
                     <tr>
-                        <td>{{ $exhibit->id }}</td>
+                        <td class="dash-activity-id">{{ $exhibit->id }}</td>
                         <td>{{ $exhibit->name }}</td>
-                        <td>{{ $exhibit->description }}</td>
+                        <td class="dash-activity-id">{{ $exhibit->description }}</td>
                         <td>{{ $exhibit->animals_count }}</td>
                         <td>
                             <a href="{{ route('exhibits.edit', $exhibit->id) }}" class="btn btn-warning">Edit</a>

@@ -6,20 +6,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th class="dash-activity-id">ID</th>
                         <th>Image</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th class="dash-activity-id">Description</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($activities as $activity)
                     <tr>
-                        <td>{{ $activity->id }}</td>
+                        <td class="dash-activity-id">{{ $activity->id }}</td>
                         <td><img src="{{ $activity->image }}" alt="{{ $activity->name }}" style="width: 50px; height: 50px;"></td>
                         <td>{{ $activity->name }}</td>
-                        <td>{{ $activity->description }}</td>
+                        <td class="dash-activity-id">{{ $activity->description }}</td>
                         <td>
                             <a href="{{ route('activities.show', $activity->id) }}" class="btn btn-info">View</a>
                             <a href="{{ route('activities.edit', $activity->id) }}" class="btn btn-warning">Edit</a>

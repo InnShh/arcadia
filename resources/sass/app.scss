@@ -638,6 +638,9 @@ nav.dash-right-side {
     @media (max-width: 1200px) {
         width: 300px;
     }
+    @media (max-width: 992px) {
+        position: unset;
+    }
     .dash-nav-content {
         padding: 0;
         > div:has(img[alt="Arcadia logo"]) {
@@ -686,7 +689,40 @@ nav.dash-right-side {
 main.dash-content {
     min-height: 100vh;
     width: 100%;
-    margin-left: 470px;
+    margin-top: 2em;
+    padding-left: 500px;
+    
+    @media (max-width: 1200px) {
+        padding-left: 330px;
+        margin-top: 2em;
+    }
+    @media (max-width: 992px) {
+        padding: 0 2em;
+    }
+    @media (max-width: 420px){
+        padding: 0 1em;
+    }
+    .btn {
+        border-radius: 0;
+    }
+    .btn-info, .btn-warning, .btn-primary,
+    .btn-danger {
+        text-decoration: none;
+        min-width: 75px;
+        text-align: center;
+        margin: 5px 5px 5px 0;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    h1 {
+        font-family: $title-font;
+    }
+    table td,
+    table th,
+    table tr {
+        text-align: center;
+    }
 }
 
 
@@ -814,4 +850,10 @@ main.dash-content {
             }
     }
 }
+}
+
+@media (max-width: 420px) {
+   .dash-activity-id {
+        display: none;
+   } 
 }

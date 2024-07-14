@@ -18,7 +18,7 @@
 
 <body class="dashboard">
     <x-dashboard-nav />
-    <main class="dash-content">
+    <main class="dash-content container-fluid">
 
     </main>
 </body>
