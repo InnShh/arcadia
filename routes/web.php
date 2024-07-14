@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\AnimalImageController;
 use App\Http\Controllers\ExhibitController;
 use App\Http\Controllers\ExhibitImageController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ Route::resource('/users', UserController::class);
 Route::resource('/activities', ActivityController::class);
 Route::resource('/exhibits', ExhibitController::class)->except(['show']);
 Route::resource('/exhibit-images', ExhibitImageController::class);
+Route::resource('animals', AnimalController::class)->except(['show']);
+Route::resource('animal-images', AnimalImageController::class);
 
 Route::get('/{exhibit:slug}/{animal:slug}', [AnimalController::class, 'show'])->name('animals.show');
 Route::get('/{exhibit:slug}', [ExhibitController::class, 'show'])->name('exhibits.show');

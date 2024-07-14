@@ -2,65 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAnimalImageRequest;
-use App\Http\Requests\UpdateAnimalImageRequest;
+use App\Models\Animal;
 use App\Models\AnimalImage;
+use Illuminate\Http\Request;
 
 class AnimalImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $images = AnimalImage::with('animal')->get();
+        return view('animal-images.index', compact('images'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $animals = Animal::all();
+        return view('animal-images.create', compact('animals'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAnimalImageRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'animal_id' => 'required|exists:animals,id',
+            'image_path' => 'required|string|max:255',
+        ]);
+
+        AnimalImage::create($validated);
+
+        return redirect()->route('animal-images.index')->with('success', 'Animal image created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AnimalImage $animalImage)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(AnimalImage $animalImage)
     {
-        //
+        $animals = Animal::all();
+        return view('animal-images.edit', compact('animalImage', 'animals'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAnimalImageRequest $request, AnimalImage $animalImage)
+    public function update(Request $request, AnimalImage $animalImage)
     {
-        //
+        $validated = $request->validate([
+            'animal_id' => 'required|exists:animals,id',
+            'image_path' => 'required|string|max:255',
+        ]);
+
+        $animalImage->update($validated);
+
+        return redirect()->route('animal-images.index')->with('success', 'Animal image updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(AnimalImage $animalImage)
     {
-        //
+        $animalImage->delete();
+
+        return redirect()->route('animal-images.index')->with('success', 'Animal image deleted successfully.');
     }
 }

@@ -20,7 +20,8 @@ class DashboardNav extends Component
             ['url' => route('activities.index'), 'name' => 'Activities'],
             ['url' => route('exhibits.index'), 'name' => 'Exhibits'],
             ['url' => route('exhibit-images.index'), 'name' => 'Exhibit Images'],
-            ['url' => '/animals', 'name' => 'Animals'],
+            ['url' => route('animals.index'), 'name' => 'Animals'],
+            ['url' => route('animal-images.index'), 'name' => 'Animal Images'],
             ['url' => '/veterinarian-reports', 'name' => 'Veterinarian reports'],
             ['url' => '/opening-hours', 'name' => 'Opening hours'],
         ];

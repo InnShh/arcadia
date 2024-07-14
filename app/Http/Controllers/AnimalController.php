@@ -6,63 +6,63 @@ use App\Http\Requests\StoreAnimalRequest;
 use App\Http\Requests\UpdateAnimalRequest;
 use App\Models\Animal;
 use App\Models\Exhibit;
+use Request;
 
 class AnimalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAnimalRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Exhibit $exhibit, Animal $animal)
     {
         $animal->load(['images', 'exhibit.images']);
         return view('animals.show', compact('animal'));
     }
+    public function index()
+    {
+        $animals = Animal::with('exhibit')->withCount('images')->get();
+        return view('animals.index', compact('animals'));
+    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function create()
+    {
+        $exhibits = Exhibit::all();
+        return view('animals.create', compact('exhibits'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'exhibit_id' => 'required|exists:exhibits,id',
+            'slug' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+        ]);
+
+        Animal::create($validated);
+
+        return redirect()->route('animals.index')->with('success', 'Animal created successfully.');
+    }
+
     public function edit(Animal $animal)
     {
-        //
+        $exhibits = Exhibit::all();
+        return view('animals.edit', compact('animal', 'exhibits'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAnimalRequest $request, Animal $animal)
+    public function update(Request $request, Animal $animal)
     {
-        //
+        $validated = $request->validate([
+            'exhibit_id' => 'required|exists:exhibits,id',
+            'slug' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+        ]);
+
+        $animal->update($validated);
+
+        return redirect()->route('animals.index')->with('success', 'Animal updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Animal $animal)
     {
-        //
+        $animal->delete();
+
+        return redirect()->route('animals.index')->with('success', 'Animal deleted successfully.');
     }
 }
