@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ExhibitController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,7 @@ Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/users', UserController::class);
+Route::resource('/activities', ActivityController::class);
 
 Route::get('/{exhibit:slug}/{animal:slug}', [AnimalController::class, 'show'])->name('animals.show');
 Route::get('/{exhibit:slug}', [ExhibitController::class, 'show'])->name('exhibits.show');
