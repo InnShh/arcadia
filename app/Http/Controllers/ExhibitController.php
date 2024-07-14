@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreExhibitRequest;
 use App\Http\Requests\UpdateExhibitRequest;
 use App\Models\Exhibit;
+use Request;
 
 class ExhibitController extends Controller
 {
@@ -13,7 +14,8 @@ class ExhibitController extends Controller
      */
     public function index()
     {
-        //
+        $exhibits = Exhibit::withCount('animals')->get();
+        return view('exhibits.index', compact('exhibits'));
     }
 
     /**
@@ -21,15 +23,20 @@ class ExhibitController extends Controller
      */
     public function create()
     {
-        //
+        return view('exhibits.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreExhibitRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'slug' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        Exhibit::create($validated);
+
+        return redirect()->route('exhibits.index')->with('success', 'Exhibit created successfully.');
     }
 
     /**
@@ -46,15 +53,24 @@ class ExhibitController extends Controller
      */
     public function edit(Exhibit $exhibit)
     {
-        //
+        return view('exhibits.edit', compact('exhibit'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateExhibitRequest $request, Exhibit $exhibit)
+    // public function update(UpdateExhibitRequest $request, Exhibit $exhibit)
+    public function update(Request $request, Exhibit $exhibit)
     {
-        //
+        $validated = $request->validate([
+            'slug' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $exhibit->update($validated);
+
+        return redirect()->route('exhibits.index')->with('success', 'Exhibit updated successfully.');
     }
 
     /**
@@ -62,6 +78,8 @@ class ExhibitController extends Controller
      */
     public function destroy(Exhibit $exhibit)
     {
-        //
+        $exhibit->delete();
+
+        return redirect()->route('exhibits.index')->with('success', 'Exhibit deleted successfully.');
     }
 }

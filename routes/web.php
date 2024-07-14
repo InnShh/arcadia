@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ExhibitController;
+use App\Http\Controllers\ExhibitImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ReviewController;
@@ -16,6 +17,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/users', UserController::class);
 Route::resource('/activities', ActivityController::class);
+Route::resource('/exhibits', ExhibitController::class)->except(['show']);
+Route::resource('/exhibit-images', ExhibitImageController::class);
 
 Route::get('/{exhibit:slug}/{animal:slug}', [AnimalController::class, 'show'])->name('animals.show');
 Route::get('/{exhibit:slug}', [ExhibitController::class, 'show'])->name('exhibits.show');

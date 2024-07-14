@@ -4,63 +4,58 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreExhibitImageRequest;
 use App\Http\Requests\UpdateExhibitImageRequest;
+use App\Models\Exhibit;
 use App\Models\ExhibitImage;
+use Illuminate\Http\Request;
 
 class ExhibitImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $images = ExhibitImage::all();
+        return view('exhibit-images.index', compact('images'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $exhibits = Exhibit::all();
+        return view('exhibit-images.create', compact('exhibits'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreExhibitImageRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'exhibit_id' => 'required|exists:exhibits,id',
+            'image_path' => 'required|string|max:255',
+        ]);
+
+        ExhibitImage::create($validated);
+
+        return redirect()->route('exhibit-images.index')->with('success', 'Exhibit image created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ExhibitImage $exhibitImage)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(ExhibitImage $exhibitImage)
     {
-        //
+        $exhibits = Exhibit::all();
+        return view('exhibit-images.edit', compact('exhibitImage', 'exhibits'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateExhibitImageRequest $request, ExhibitImage $exhibitImage)
+    public function update(Request $request, ExhibitImage $exhibitImage)
     {
-        //
+        $validated = $request->validate([
+            'exhibit_id' => 'required|exists:exhibits,id',
+            'image_path' => 'required|string|max:255',
+        ]);
+
+        $exhibitImage->update($validated);
+
+        return redirect()->route('exhibit-images.index')->with('success', 'Exhibit image updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(ExhibitImage $exhibitImage)
     {
-        //
+        $exhibitImage->delete();
+
+        return redirect()->route('exhibit-images.index')->with('success', 'Exhibit image deleted successfully.');
     }
 }
