@@ -16,7 +16,7 @@ class DashboardNav extends Component
     public function __construct()
     {
         $this->links = [
-            ['url' => '/accounts', 'name' => 'Accounts'],
+            ['url' => '/users', 'name' => 'Accounts'],
             ['url' => '/activities', 'name' => 'Activities'],
             ['url' => '/exhibits', 'name' => 'Exhibits'],
             ['url' => '/animals', 'name' => 'Animals'],
