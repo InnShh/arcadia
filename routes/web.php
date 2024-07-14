@@ -8,6 +8,7 @@ use App\Http\Controllers\ExhibitImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
@@ -20,8 +21,10 @@ Route::resource('/users', UserController::class);
 Route::resource('/activities', ActivityController::class);
 Route::resource('/exhibits', ExhibitController::class)->except(['show']);
 Route::resource('/exhibit-images', ExhibitImageController::class);
-Route::resource('animals', AnimalController::class)->except(['show']);
-Route::resource('animal-images', AnimalImageController::class);
+Route::resource('/animals', AnimalController::class)->except(['show']);
+Route::resource('/animal-images', AnimalImageController::class);
+Route::get('/timetables', [TimetableController::class, 'index'])->name('timetables.index');
+Route::post('/timetables', [TimetableController::class, 'update'])->name('timetables.update');
 
 Route::get('/{exhibit:slug}/{animal:slug}', [AnimalController::class, 'show'])->name('animals.show');
 Route::get('/{exhibit:slug}', [ExhibitController::class, 'show'])->name('exhibits.show');
