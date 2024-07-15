@@ -2,6 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Exhibit Images</h1>
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <a href="{{ route('exhibit-images.create') }}" class="btn btn-primary">Add Image</a>
             <table class="table">
                 <thead>

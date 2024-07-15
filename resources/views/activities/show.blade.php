@@ -2,6 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Activity Details</h1>
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     {{ $activity->name }}

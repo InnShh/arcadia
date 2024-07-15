@@ -2,6 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Animals</h1>
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <a href="{{ route('animals.create') }}" class="btn btn-primary">Create Animal</a>
             <table class="table">
                 <thead>
