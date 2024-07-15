@@ -20,7 +20,7 @@ class VetoReportFactory extends Factory
         return [
             'animal_id' => $this->faker->numberBetween(1, 9),
             'user_id' => \App\Models\User::factory(),
-            'visit_date' => $this->faker->optional()->date(),
+            'visit_date' => $this->faker->date(),
             'details' => $this->faker->optional()->paragraph,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

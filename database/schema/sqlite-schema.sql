@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS veto_reports (
     id INTEGER PRIMARY KEY autoincrement NOT NULL,
     animal_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
-    visit_date DATE,
+    visit_date DATE NOT NULL,
     created_at DATETIME,
     updated_at DATETIME,
     details TEXT
