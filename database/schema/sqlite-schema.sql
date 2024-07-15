@@ -191,3 +191,13 @@ INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VA
 (17, 8, '/images/wolf-x1-sc.jpg',  NULL,NULL);
 INSERT INTO animal_images (id, animal_id, image_path, created_at, updated_at) VALUES
 (18, 9, '/images/red-deer-x1-sc.jpg',  NULL,NULL);
+
+CREATE TABLE IF NOT EXISTS veto_reports (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    animal_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    visit_date DATE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    details TEXT
+);
