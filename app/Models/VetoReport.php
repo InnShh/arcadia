@@ -34,6 +34,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class VetoReport extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'animal_id',
+        'user_id',
+        'visit_date',
+        'details',
+    ];
     public function veto(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

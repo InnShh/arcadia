@@ -10,6 +10,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VetoReportController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
 Route::post('/send-message', [HomePageController::class, 'sendMessage'])->name('homepage.sendmessage');
@@ -23,6 +24,7 @@ Route::resource('/exhibits', ExhibitController::class)->except(['show']);
 Route::resource('/exhibit-images', ExhibitImageController::class);
 Route::resource('/animals', AnimalController::class)->except(['show']);
 Route::resource('/animal-images', AnimalImageController::class);
+Route::resource('/veterinary-reports', VetoReportController::class);
 Route::get('/timetables', [TimetableController::class, 'index'])->name('timetables.index');
 Route::post('/timetables', [TimetableController::class, 'update'])->name('timetables.update');
 
