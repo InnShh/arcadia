@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibit whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibit whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibit whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Animal> $animals
+ * @property-read int|null $animals_count
  * @mixin \Eloquent
  */
 class Exhibit extends Model

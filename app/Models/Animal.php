@@ -28,6 +28,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Animal whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Animal whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Animal whereUpdatedAt($value)
+ * @property string|null $avatar_image_path
+ * @property string|null $title
+ * @property string|null $title_description
+ * @property string|null $description
+ * @property string|null $race
+ * @property string|null $age
+ * @property string|null $diet
+ * @property string|null $consumption
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereAvatarImagePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereConsumption($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereDiet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereRace($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Animal whereTitleDescription($value)
  * @mixin \Eloquent
  */
 class Animal extends Model
