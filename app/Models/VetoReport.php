@@ -36,10 +36,10 @@ class VetoReport extends Model
     use HasFactory;
     public function veto(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function animal(): BelongsTo
     {
-        return $this->belongsTo(Animal::class);
+        return $this->belongsTo(Animal::class, 'animal_id');
     }
 }
