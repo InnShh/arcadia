@@ -6,15 +6,43 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" name="name" class="form-control" required>
+                    <input type="text" name="name" class="form-control" value="{{old('name')}}" required>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <input type="email" name="email" class="form-control" value="{{old('email')}}" required>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="user_role_id">Role</label>
+                    <select name="user_role_id" id="user_role_id" class="form-control" required>
+                        @foreach ($roles as $role)
+                        <option value="{{ $role->id }}" @selected(old('user_role_id',2)==$role->id)>{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('user_role_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" name="password" class="form-control" required>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

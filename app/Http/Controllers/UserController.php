@@ -3,37 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserRole;
+use Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('role')->get();
         return view('users.index', compact('users'));
     }
 
     public function create()
     {
-        return view('users.create');
+        return view('users.create', ['roles' => UserRole::all()]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'user_role_id' => 'required|exists:user_roles,id',
             'password' => 'required|min:6',
         ]);
 
         $user = new User([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'user_role_id' => $validated['user_role_id'],
+            'password' => Hash::make($validated['password']),
         ]);
 
         $user->save();
-        return redirect('/users')->with('success', 'User saved!');
+        return redirect(route('users.index'))->with('success', 'User saved!');
     }
 
     public function show($id)

@@ -17,6 +17,10 @@
                     <td>{{ $user->name }}</td>
                 </tr>
                 <tr>
+                    <th>Role:</th>
+                    <td>{{ $user->role->name }}</td>
+                </tr>
+                <tr>
                     <th>Email:</th>
                     <td>{{ $user->email }}</td>
                 </tr>

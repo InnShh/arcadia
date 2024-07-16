@@ -1,6 +1,16 @@
 /* default schema */
 CREATE TABLE IF NOT EXISTS "migrations" ("id" integer primary key autoincrement not null, "migration" varchar not null, "batch" integer not null);
-CREATE TABLE IF NOT EXISTS "users" ("id" integer primary key autoincrement not null, "name" varchar not null, "email" varchar not null, "email_verified_at" datetime, "password" varchar not null, "remember_token" varchar, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE IF NOT EXISTS "users" (
+    "id" integer primary key autoincrement not null, 
+    "name" varchar not null, 
+    "email" varchar not null, 
+    "user_role_id" INTEGER NOT NULL,
+    "email_verified_at" datetime, 
+    "password" varchar not null, 
+    "remember_token" varchar, 
+    "created_at" datetime, 
+    "updated_at" datetime
+    );
 CREATE UNIQUE INDEX "users_email_unique" on "users" ("email");
 CREATE TABLE IF NOT EXISTS "password_reset_tokens" ("email" varchar not null, "token" varchar not null, "created_at" datetime, primary key ("email"));
 CREATE TABLE IF NOT EXISTS "sessions" ("id" varchar not null, "user_id" integer, "ip_address" varchar, "user_agent" text, "payload" text not null, "last_activity" integer not null, primary key ("id"));
@@ -17,6 +27,13 @@ INSERT INTO migrations VALUES(1,'0001_01_01_000000_create_users_table',1);
 INSERT INTO migrations VALUES(2,'0001_01_01_000001_create_cache_table',1);
 INSERT INTO migrations VALUES(3,'0001_01_01_000002_create_jobs_table',1);
 /* custom schema */
+CREATE TABLE IF NOT EXISTS user_roles (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    name VARCHAR(255) NOT NULL
+);
+INSERT INTO user_roles VALUES(1, "Administrator");
+INSERT INTO user_roles VALUES(2, "Employee");
+INSERT INTO user_roles VALUES(3, "Veterinary");
 CREATE TABLE IF NOT EXISTS reviews (
     id INTEGER PRIMARY KEY autoincrement NOT NULL,
     pseudo VARCHAR(255) NOT NULL,
