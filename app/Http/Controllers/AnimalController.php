@@ -6,7 +6,7 @@ use App\Http\Requests\StoreAnimalRequest;
 use App\Http\Requests\UpdateAnimalRequest;
 use App\Models\Animal;
 use App\Models\Exhibit;
-use Request;
+use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {

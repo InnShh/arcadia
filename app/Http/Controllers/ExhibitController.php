@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreExhibitRequest;
 use App\Http\Requests\UpdateExhibitRequest;
 use App\Models\Exhibit;
-use Request;
+use Illuminate\Http\Request;
 
 class ExhibitController extends Controller
 {
