@@ -28,6 +28,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class AnimalImage extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'animal_id',
+        'image_path',
+    ];
     public function animal(): BelongsTo
     {
         return $this->belongsTo(Animal::class, 'animal_id');
