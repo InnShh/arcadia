@@ -228,17 +228,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// link active states FOR DASHBOARD - ADAPT after back !!!
-document.addEventListener('DOMContentLoaded', function() {
-    var menuLinks = document.querySelectorAll('nav.dash-right-side a.dash-nav-link-item');
-
-    var currentPath = window.location.pathname;
-
-    menuLinks.forEach(function(link) {
-        if (link.getAttribute('href') === currentPath) {
-            link.classList.add('active');
-        }
-    });
-});
-
