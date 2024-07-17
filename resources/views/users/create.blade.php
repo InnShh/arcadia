@@ -6,7 +6,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" name="name" class="form-control" value="{{old('name')}}" required>
+                    <input type="text" name="name" class="form-control @error('name')is-invalid @enderror" value="{{old('name')}}" required>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control" value="{{old('email')}}" required>
+                    <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" value="{{old('email')}}" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="user_role_id">Role</label>
-                    <select name="user_role_id" id="user_role_id" class="form-control" required>
+                    <select name="user_role_id" id="user_role_id" class="form-control @error('user_role_id')is-invalid @enderror" required>
                         @foreach ($roles as $role)
                         <option value="{{ $role->id }}" @selected(old('user_role_id',2)==$role->id)>{{ $role->name }}</option>
                         @endforeach
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" class="form-control" required>
+                    <input type="password" name="password" class="form-control @error('password')is-invalid @enderror" required>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
