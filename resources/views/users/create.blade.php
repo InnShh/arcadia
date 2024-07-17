@@ -9,7 +9,7 @@
                     <input type="text" name="name" class="form-control @error('name')is-invalid @enderror" value="{{old('name')}}" required>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
