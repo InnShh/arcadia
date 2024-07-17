@@ -10,7 +10,7 @@
                     <input type="text" name="name" class="form-control @error('name')is-invalid @enderror" value="{{ old('name',$user->name)}}" required>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -19,7 +19,7 @@
                     <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" value="{{ old('email',$user->email) }}" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -28,7 +28,7 @@
                     <input type="password" name="password" class="form-control @error('password')is-invalid @enderror">
                     @error('password')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>

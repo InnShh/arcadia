@@ -18,7 +18,7 @@
                     <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" value="{{old('email')}}" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -31,7 +31,7 @@
                     </select>
                     @error('user_role_id')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -40,7 +40,7 @@
                     <input type="password" name="password" class="form-control @error('password')is-invalid @enderror" required>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
