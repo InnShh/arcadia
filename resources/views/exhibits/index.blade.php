@@ -26,7 +26,8 @@
                         <td class="dash-activity-id">{{ $exhibit->description }}</td>
                         <td>{{ $exhibit->animals_count }}</td>
                         <td>
-                            <a href="{{ route('exhibits.edit', $exhibit->id) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('exhibits.show', $exhibit) }}" class="btn btn-info">View</a>
+                            <a href="{{ route('exhibits.edit', $exhibit) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('exhibits.destroy', $exhibit->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
