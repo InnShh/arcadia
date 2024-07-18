@@ -25,7 +25,7 @@
                     <input type="date" name="visit_date" id="visit_date" class="form-control">
                 </div>
                 <x-text-field name="details" />
-                <button type="submit" class="btn btn-primary">Create</button>
+                <x-submit-button text="Create" />
             </form>
         </div>
     </div>

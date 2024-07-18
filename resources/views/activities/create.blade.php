@@ -7,7 +7,7 @@
                 <x-string-field name="image" />
                 <x-string-field name="name" />
                 <x-text-field name="description" />
-                <button type="submit" class="btn btn-primary">Create</button>
+                <x-submit-button text="Create" />
             </form>
         </div>
     </div>

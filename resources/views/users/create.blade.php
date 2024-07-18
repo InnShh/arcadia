@@ -28,7 +28,7 @@
                     </span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <x-submit-button text="Save" />
             </form>
         </div>
     </div>

@@ -32,7 +32,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <x-submit-button text="Update" />
             </form>
         </div>
     </div>

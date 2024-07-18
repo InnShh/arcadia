@@ -8,7 +8,7 @@
                 <x-string-field name="image" :value="$activity->image" />
                 <x-string-field name="name" :value="$activity->name" />
                 <x-text-field name="description" :value="$activity->description" />
-                <button type="submit" class="btn btn-primary">Update</button>
+                <x-submit-button text="Update" />
             </form>
         </div>
     </div>

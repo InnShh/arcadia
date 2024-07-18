@@ -13,7 +13,7 @@
                     </select>
                 </div>
                 <x-string-field name="image_path" />
-                <button type="submit" class="btn btn-primary">Add</button>
+                <x-submit-button text="Add" />
             </form>
         </div>
     </div>

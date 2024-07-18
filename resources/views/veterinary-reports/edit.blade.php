@@ -26,7 +26,7 @@
                     <input type="date" name="visit_date" id="visit_date" class="form-control" value="{{ $veterinaryReport->visit_date }}">
                 </div>
                 <x-text-field name="details" :value="$veterinaryReport->details" />
-                <button type="submit" class="btn btn-primary">Update</button>
+                <x-submit-button text="Update" />
             </form>
         </div>
     </div>

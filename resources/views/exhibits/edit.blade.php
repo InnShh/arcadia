@@ -8,7 +8,7 @@
                 <x-string-field name="slug" :value="$exhibit->slug" />
                 <x-string-field name="name" :value="$exhibit->name" />
                 <x-text-field name="description" :value="$exhibit->description" />
-                <button type="submit" class="btn btn-primary">Update</button>
+                <x-submit-button text="Update" />
             </form>
         </div>
     </div>

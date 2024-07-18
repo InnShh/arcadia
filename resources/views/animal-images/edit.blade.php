@@ -14,7 +14,7 @@
                     </select>
                 </div>
                 <x-string-field name="image_path" :value="$animalImage->image_path" />
-                <button type="submit" class="btn btn-primary">Update</button>
+                <x-submit-button text="Update" />
             </form>
         </div>
     </div>

@@ -14,7 +14,7 @@
                 </div>
                 <x-string-field name="slug" />
                 <x-string-field name="name" />
-                <button type="submit" class="btn btn-primary">Create</button>
+                <x-submit-button text="Create" />
             </form>
         </div>
     </div>
