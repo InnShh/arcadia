@@ -5,14 +5,7 @@
             <form action="{{ route('animals.update', $animal->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label for="exhibit_id">Exhibit</label>
-                    <select name="exhibit_id" id="exhibit_id" class="form-control" required>
-                        @foreach ($exhibits as $exhibit)
-                        <option value="{{ $exhibit->id }}" {{ $animal->exhibit_id == $exhibit->id ? 'selected' : '' }}>{{ $exhibit->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                <x-select-field name="exhibit_id" label="Exhibit:" :selected="$animal->exhibit_id" :items="$exhibits" />
                 <x-string-field name="slug" :value="$animal->slug" />
                 <x-string-field name="name" :value="$animal->name" />
                 <x-submit-button text="Update" />

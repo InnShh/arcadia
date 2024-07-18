@@ -7,6 +7,7 @@
                 @method('PUT')
                 <x-string-field name="name" :value="$user->name" />
                 <x-string-field name="email" type="email" :value="$user->email" />
+                <x-select-field name="user_role_id" label="Role:" :selected="$user->user_role_id" :items="$roles" />
                 <div class="form-group">
                     <label for="password">Password (leave blank to keep current password):</label>
                     <input type="password" name="password" class="form-control @error('password')is-invalid @enderror">

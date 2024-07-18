@@ -6,19 +6,7 @@
                 @csrf
                 <x-string-field name="name" />
                 <x-string-field name="email" type="email" />
-                <div class="form-group">
-                    <label for="user_role_id">Role</label>
-                    <select name="user_role_id" id="user_role_id" class="form-control @error('user_role_id')is-invalid @enderror" required>
-                        @foreach ($roles as $role)
-                        <option value="{{ $role->id }}" @selected(old('user_role_id',2)==$role->id)>{{ $role->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('user_role_id')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
+                <x-select-field name="user_role_id" label="Role:" selected="2" :items="$roles" />
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" name="password" class="form-control @error('password')is-invalid @enderror" required>
