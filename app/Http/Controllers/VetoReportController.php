@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\User;
 use App\Models\VetoReport;
+use App\Rules\VeterinaryUser;
 use Illuminate\Http\Request;
 
 class VetoReportController extends Controller
@@ -24,7 +25,7 @@ class VetoReportController extends Controller
     public function create()
     {
         $animals = Animal::all();
-        $veterinarians = User::get(); // TODO only veterinary
+        $veterinarians = User::where('user_role_id', 3)->get();
         return view('veterinary-reports.create', compact('animals', 'veterinarians'));
     }
 
@@ -35,7 +36,7 @@ class VetoReportController extends Controller
     {
         $validated = $request->validate([
             'animal_id' => 'required|exists:animals,id',
-            'user_id' => 'required|exists:users,id',
+            'user_id' => ['required', 'exists:users,id', new VeterinaryUser()],
             'visit_date' => 'nullable|date',
             'details' => 'nullable|string',
         ]);
@@ -59,7 +60,7 @@ class VetoReportController extends Controller
     public function edit(VetoReport $veterinaryReport)
     {
         $animals = Animal::all();
-        $veterinarians = User::get();
+        $veterinarians = User::where('user_role_id', 3)->get();
         return view('veterinary-reports.edit', compact('veterinaryReport', 'animals', 'veterinarians'));
     }
 
@@ -70,7 +71,7 @@ class VetoReportController extends Controller
     {
         $validated = $request->validate([
             'animal_id' => 'required|exists:animals,id',
-            'user_id' => 'required|exists:users,id', // TODO should be veterinary
+            'user_id' => ['required', 'exists:users,id', new VeterinaryUser()],
             'visit_date' => 'nullable|date',
             'details' => 'nullable|string',
         ]);
