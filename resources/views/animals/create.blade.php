@@ -12,14 +12,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="slug">Slug</label>
-                    <input type="text" name="slug" id="slug" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required>
-                </div>
+                <x-string-field name="slug" />
+                <x-string-field name="name" />
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>

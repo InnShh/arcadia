@@ -12,10 +12,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="image_path">Image Path</label>
-                    <input type="text" name="image_path" id="image_path" class="form-control" required>
-                </div>
+                <x-string-field name="image_path" />
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>

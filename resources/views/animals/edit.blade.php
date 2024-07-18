@@ -13,14 +13,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="slug">Slug</label>
-                    <input type="text" name="slug" id="slug" class="form-control" value="{{ $animal->slug }}">
-                </div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ $animal->name }}" required>
-                </div>
+                <x-string-field name="slug" :value="$animal->slug" />
+                <x-string-field name="name" :value="$animal->name" />
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>

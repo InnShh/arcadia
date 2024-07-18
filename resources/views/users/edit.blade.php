@@ -5,24 +5,8 @@
             <form action="{{ route('users.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" class="form-control @error('name')is-invalid @enderror" value="{{ old('name',$user->name)}}" required>
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" value="{{ old('email',$user->email) }}" required>
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
+                <x-string-field name="name" :value="$user->name" />
+                <x-string-field name="email" type="email" :value="$user->email" />
                 <div class="form-group">
                     <label for="password">Password (leave blank to keep current password):</label>
                     <input type="password" name="password" class="form-control @error('password')is-invalid @enderror">

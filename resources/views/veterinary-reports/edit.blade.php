@@ -25,10 +25,7 @@
                     <label for="visit_date">Visit Date</label>
                     <input type="date" name="visit_date" id="visit_date" class="form-control" value="{{ $veterinaryReport->visit_date }}">
                 </div>
-                <div class="form-group">
-                    <label for="details">Details</label>
-                    <textarea name="details" id="details" class="form-control">{{ $veterinaryReport->details }}</textarea>
-                </div>
+                <x-text-field name="details" :value="$veterinaryReport->details" />
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>

@@ -4,33 +4,9 @@
             <h1>Create Exhibit</h1>
             <form action="{{ route('exhibits.store') }}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" class="form-control @error('slug')is-invalid @enderror" value="{{old('slug')}}" required>
-                    @error('slug')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" class="form-control @error('name')is-invalid @enderror" value="{{old('name')}}" required>
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea name="description" id="description" class="form-control @error('description')is-invalid @enderror">{{old('description')}}</textarea>
-                    @error('description')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
+                <x-string-field name="slug" />
+                <x-string-field name="name" />
+                <x-text-field name="description" />
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>

@@ -24,10 +24,7 @@
                     <label for="visit_date">Visit Date</label>
                     <input type="date" name="visit_date" id="visit_date" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="details">Details</label>
-                    <textarea name="details" id="details" class="form-control"></textarea>
-                </div>
+                <x-text-field name="details" />
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
