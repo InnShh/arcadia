@@ -5,6 +5,7 @@ use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\AnimalImageController;
 use App\Http\Controllers\ExhibitController;
 use App\Http\Controllers\ExhibitImageController;
+use App\Http\Controllers\FeedingReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ReviewController;
@@ -25,6 +26,7 @@ Route::resource('/exhibit-images', ExhibitImageController::class);
 Route::resource('/animals', AnimalController::class)->except(['show']);
 Route::resource('/animal-images', AnimalImageController::class);
 Route::resource('/veterinary-reports', VetoReportController::class);
+Route::resource('/feeding-reports', FeedingReportController::class);
 Route::get('/timetables', [TimetableController::class, 'index'])->name('timetables.index');
 Route::post('/timetables', [TimetableController::class, 'update'])->name('timetables.update');
 
