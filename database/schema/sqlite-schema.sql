@@ -218,3 +218,14 @@ CREATE TABLE IF NOT EXISTS veto_reports (
     updated_at DATETIME,
     details TEXT
 );
+
+CREATE TABLE IF NOT EXISTS feeding_reports (
+    id INTEGER PRIMARY KEY autoincrement NOT NULL,
+    user_id INTEGER NOT NULL,
+    animal_id INTEGER NOT NULL,
+    food TEXT,
+    food_vol INTEGER,
+    created_at DATETIME,
+    updated_at DATETIME,
+    details TEXT
+);
