@@ -35,6 +35,9 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @property int $role_id
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
+ * @property int $user_role_id
+ * @property-read \App\Models\UserRole|null $role
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUserRoleId($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable
