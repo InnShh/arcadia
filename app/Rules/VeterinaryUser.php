@@ -15,7 +15,7 @@ class VeterinaryUser implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!User::where('id', $value)->where('user_role_id', 3)->exists()) {
+        if (!User::where('id', $value)->veterinary()->exists()) {
             $fail('The selected user is not a veterinary.');
         }
     }

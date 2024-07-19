@@ -24,7 +24,7 @@ class FeedingReportController extends Controller
      */
     public function create()
     {
-        $employees = User::where('user_role_id', 2)->get();
+        $employees = User::employee()->get();
         $animals = Animal::all();
         return view('feeding-reports.create', compact('employees', 'animals'));
     }
@@ -52,7 +52,7 @@ class FeedingReportController extends Controller
      */
     public function edit(FeedingReport $feedingReport)
     {
-        $employees = User::where('user_role_id', 2)->get();
+        $employees = User::employee()->get();
         $animals = Animal::all();
         return view('feeding-reports.edit', compact('feedingReport', 'employees', 'animals'));
     }

@@ -22,7 +22,7 @@ class FeedingReportSeeder extends Seeder
         foreach ($halfAnimalIds as $animalId) {
             FeedingReport::factory()->count(rand(1, 3))->create([
                 'animal_id' => $animalId,
-                'user_id' => User::where('user_role_id', 2)->inRandomOrder()->first()->id,
+                'user_id' => User::employee()->inRandomOrder()->first()->id,
             ]);
         }
     }

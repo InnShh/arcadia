@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,11 +40,18 @@ use Illuminate\Notifications\Notifiable;
  * @property int $user_role_id
  * @property-read \App\Models\UserRole|null $role
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUserRoleId($value)
+ * @method static Builder|User admin()
+ * @method static Builder|User employee()
+ * @method static Builder|User veterinary()
  * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    const ROLE_ADMIN = 1;
+    const ROLE_EMPLOYEE = 2;
+    const ROLE_VETERINARY = 3;
 
     /**
      * The attributes that are mass assignable.
@@ -81,5 +90,68 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(UserRole::class, 'user_role_id');
+    }
+
+    /**
+     * Scope a query to only include admins.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return void
+     */
+    public function scopeAdmin(Builder $query): void
+    {
+        $query->where('user_role_id', self::ROLE_ADMIN);
+    }
+
+    /**
+     * Scope a query to only include employees.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return void
+     */
+    public function scopeEmployee(Builder $query): void
+    {
+        $query->where('user_role_id', self::ROLE_EMPLOYEE);
+    }
+
+    /**
+     * Scope a query to only include veterinarians.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return void
+     */
+    public function scopeVeterinary(Builder $query): void
+    {
+        $query->where('user_role_id', self::ROLE_VETERINARY);
+    }
+
+    /**
+     * Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->user_role_id == self::ROLE_ADMIN;
+    }
+
+    /**
+     * Check if the user is an employee.
+     *
+     * @return bool
+     */
+    public function isEmployee(): bool
+    {
+        return $this->user_role_id == self::ROLE_EMPLOYEE;
+    }
+
+    /**
+     * Check if the user is a veterinary.
+     *
+     * @return bool
+     */
+    public function isVeterinary(): bool
+    {
+        return $this->user_role_id == self::ROLE_VETERINARY;
     }
 }

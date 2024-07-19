@@ -26,7 +26,7 @@ class VetoReportSeeder extends Seeder
             // Generate 1 to 3 reports for each animal
             VetoReport::factory()->count(rand(1, 3))->create([
                 'animal_id' => $animalId,
-                'user_id' => User::where('user_role_id', 3)->inRandomOrder()->first()->id,
+                'user_id' => User::veterinary()->inRandomOrder()->first()->id,
             ]);
         }
     }

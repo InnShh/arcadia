@@ -15,17 +15,36 @@ class DashboardNav extends Component
      */
     public function __construct()
     {
-        $this->links = [
-            ['url' => route('users.index'), 'name' => 'Accounts'],
-            ['url' => route('activities.index'), 'name' => 'Activities'],
-            ['url' => route('exhibits.index'), 'name' => 'Exhibits'],
-            ['url' => route('exhibit-images.index'), 'name' => 'Exhibit Images'],
-            ['url' => route('animals.index'), 'name' => 'Animals'],
-            ['url' => route('animal-images.index'), 'name' => 'Animal Images'],
-            ['url' => route('veterinary-reports.index'), 'name' => 'Veterinary reports'],
-            ['url' => route('timetables.index'), 'name' => 'Opening hours'],
-            ['url' => route('feeding-reports.index'), 'name' => 'Feeding reports'],
-        ];
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isVeterinary()) {
+            $this->links = [
+                ['url' => route('exhibits.index'), 'name' => 'Exhibits'],
+                ['url' => route('animals.index'), 'name' => 'Animals'],
+                ['url' => route('veterinary-reports.index'), 'name' => 'Veterinary reports'],
+                ['url' => route('feeding-reports.index'), 'name' => 'Feeding reports'],
+            ];
+        } elseif ($user->isEmployee()) {
+            $this->links = [
+                // avis?
+                ['url' => route('activities.index'), 'name' => 'Activities'],
+                ['url' => route('feeding-reports.index'), 'name' => 'Feeding reports'],
+            ];
+        } elseif ($user->isAdmin()) {
+            $this->links = [
+                ['url' => route('users.index'), 'name' => 'Accounts'],
+                ['url' => route('activities.index'), 'name' => 'Activities'],
+                ['url' => route('exhibits.index'), 'name' => 'Exhibits'],
+                ['url' => route('exhibit-images.index'), 'name' => 'Exhibit Images'],
+                ['url' => route('animals.index'), 'name' => 'Animals'],
+                ['url' => route('animal-images.index'), 'name' => 'Animal Images'],
+                ['url' => route('veterinary-reports.index'), 'name' => 'Veterinary reports'],
+                ['url' => route('timetables.index'), 'name' => 'Opening hours'],
+                // ['url' => route('feeding-reports.index'), 'name' => 'Feeding reports'],
+            ];
+        } else {
+            abort(403);
+        }
     }
 
     /**

@@ -15,7 +15,7 @@ class EmployeeUser implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!User::where('id', $value)->where('user_role_id', 2)->exists()) {
+        if (!User::where('id', $value)->employee()->exists()) {
             $fail('The selected user is not an employee.');
         }
     }
