@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Str;
 
 class StringField extends Component
 {
@@ -13,6 +14,7 @@ class StringField extends Component
      */
     public function __construct(
         public string $name,
+        public string $label = '',
         public string|null $value = '',
         public string $type = 'text',
     ) {
@@ -24,6 +26,9 @@ class StringField extends Component
      */
     public function render(): View|Closure|string
     {
+        if (empty($this->label)) {
+            $this->label = Str::ucfirst(str_replace('_', ' ', $this->name));
+        }
         return view('components.string-field');
     }
 }
