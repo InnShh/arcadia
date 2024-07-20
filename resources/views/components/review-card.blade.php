@@ -15,13 +15,12 @@
         </div>
     </div>
     <div class="card-footer">
-        <form action="{{ route('reviews.approve', $review->id) }}" method="POST" style="display:inline-block;">
+        <form action="{{ route('reviews.approve', $review) }}" method="POST" style="display:inline-block;">
             @csrf
             <x-submit-button text="Approve" class="btn btn-success" />
         </form>
-        <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" style="display:inline-block;">
+        <form action="{{ route('reviews.reject', $review) }}" method="POST" style="display:inline-block;">
             @csrf
-            @method('DELETE')
             <x-submit-button text="Reject" class="btn btn btn-danger" />
         </form>
     </div>
