@@ -116,20 +116,6 @@
             <div id="animal-cards">
                 @include('partials.animal-cards', ['animals' => $animals])
             </div>
-            {{--
-            <x-card-wrapper>
-                <x-card href="/exhibit/zebra" img="/images/amur-tiger-1x.jpg" title="Amur Tiger" text="Forest Exhibit" />
-                <x-card href="{{ route('giraffemax') }}" img="/images/2giraffe-1x.jpg" title="Giraffe Max" text="Savanna Exhibit" />
-            <x-card href="/exhibit/desert-fox" img="/images/polar-bear-1x.jpg" title="Polar bear" text="Arctic Exhibit" />
-            <x-card href="/exhibit/lion" img="/images/female-lion-1x.jpg" title="Lion" text="Savanna Exhibit" />
-            </x-card-wrapper>
-            <x-card-wrapper>
-                <x-card href="/exhibit/zebra" img="/images/amur-tiger-1x.jpg" title="Amur Tiger" text="Forest Exhibit" />
-                <x-card href="{{ route('giraffemax') }}" img="/images/2giraffe-1x.jpg" title="Giraffe Max" text="Savanna Exhibit" />
-                <x-card href="/exhibit/desert-fox" img="/images/polar-bear-1x.jpg" title="Polar bear" text="Arctic Exhibit" />
-                <x-card href="/exhibit/lion" img="/images/female-lion-1x.jpg" title="Lion" text="Savanna Exhibit" />
-            </x-card-wrapper>
-            --}}
             <div class="row">
                 <button type="button" class="btn btn-outlined w-chbl" id="load-more-btn">Load more</button>
             </div>
