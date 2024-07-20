@@ -44,7 +44,10 @@ class ReviewController extends Controller
 
     public function update(StoreUpdateReviewRequest $request, Review $review)
     {
-        $review->update($request->validated());
+        $validated = $request->validated();
+        $validated['approved'] = $request->input('approved', 0);
+
+        $review->update($validated);
 
         return redirect()->route('reviews.index')->with('success', 'Review updated successfully.');
     }
