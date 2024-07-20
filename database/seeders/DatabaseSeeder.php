@@ -15,13 +15,25 @@ class DatabaseSeeder extends Seeder
     {
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'user_role_id' => 1,
-            'password' => 'test@example.com',
+            'name' => 'Test Admin',
+            'email' => 'adm@example.test',
+            'user_role_id' => User::ROLE_ADMIN,
+            'password' => 'adm@example.test',
         ]);
-        User::factory(3)->employee()->create();
-        User::factory(1)->veterinary()->create();
+        User::factory()->create([
+            'name' => 'Test Employee',
+            'email' => 'emp@example.test',
+            'user_role_id' => User::ROLE_EMPLOYEE,
+            'password' => 'emp@example.test',
+        ]);
+        User::factory()->create([
+            'name' => 'Test Veterinary',
+            'email' => 'vet@example.test',
+            'user_role_id' => User::ROLE_VETERINARY,
+            'password' => 'vet@example.test',
+        ]);
+        User::factory(2)->employee()->create();
+        // User::factory(1)->veterinary()->create();
         $this->call([
             ReviewSeeder::class,
             VetoReportSeeder::class,
