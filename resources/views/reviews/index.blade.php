@@ -16,7 +16,7 @@
                         <th>Pseudo</th>
                         <th>Comment</th>
                         <th>Rating</th>
-                        <th>Approved</th>
+                        <th>Moderation</th>
                         <th>Actions</th>
                     </tr>
                 </thead>

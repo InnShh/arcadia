@@ -6,15 +6,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class SubmitButton extends Component
+class ReviewCard extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public string $text = "Submit",
-        public string $class = "btn btn-primary"
-    ) {
+    public function __construct()
+    {
         //
     }
 
@@ -23,6 +21,6 @@ class SubmitButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.submit-button');
+        return view('components.review-card');
     }
 }

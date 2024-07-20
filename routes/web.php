@@ -16,6 +16,7 @@ use App\Http\Controllers\VetoReportController;
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
 Route::post('/send-message', [HomePageController::class, 'sendMessage'])->name('homepage.sendmessage');
 Route::post('/load-more-animals', [HomePageController::class, 'loadMoreAnimals'])->name('homepage.load-more-animals');
+Route::resource('/reviews', ReviewController::class)->only(['store']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/users', UserController::class);
@@ -28,8 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/feeding-reports', FeedingReportController::class);
     Route::get('/timetables', [TimetableController::class, 'index'])->name('timetables.index');
     Route::post('/timetables', [TimetableController::class, 'update'])->name('timetables.update');
-    Route::resource('/reviews', ReviewController::class);
+    Route::resource('/reviews', ReviewController::class)->except(['store']);
     Route::post('/reviews/{review}/approve', [ReviewController::class, 'approve'])->name('reviews.approve');
+    Route::post('/reviews/{review}/reject', [ReviewController::class, 'reject'])->name('reviews.reject');
 });
 Auth::routes();
 

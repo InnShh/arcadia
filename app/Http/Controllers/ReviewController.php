@@ -10,8 +10,18 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::all();
-        return view('reviews.index', compact('reviews'));
+        /** @var \App\Models\User */
+        $user = auth()->user();
+
+        if ($user->isEmployee()) {
+            $reviews = Review::whereNull('approved')->latest()->get();
+            return view('emp.reviews.index', compact('reviews'));
+        } elseif ($user->isAdmin()) {
+            $reviews = Review::all();
+            return view('reviews.index', compact('reviews'));
+        }
+
+        abort(403);
     }
 
     public function create()
@@ -21,13 +31,9 @@ class ReviewController extends Controller
     public function store(StoreUpdateReviewRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['approved'] = null;
 
-        Review::create([
-            'pseudo' => $validatedData['name'],
-            'comment' => $validatedData['message'],
-            'rating' => $validatedData['rating'],
-            'approved' => false, // Default to false for moderation
-        ]);
+        Review::create($validatedData);
 
         return response()->json(['success' => true]);
     }
@@ -56,13 +62,20 @@ class ReviewController extends Controller
     {
         $review->delete();
 
-        return redirect()->route('reviews.index')->with('success', 'Review deleted successfully.');
+        return redirect()->route('reviews.index')->with('success', 'Review deleted.');
     }
 
     public function approve(Review $review)
     {
         $review->update(['approved' => 1]);
 
-        return redirect()->route('reviews.index')->with('success', 'Review approved successfully.');
+        return redirect()->route('reviews.index')->with('success', 'Review approved.');
+    }
+
+    public function reject(Review $review)
+    {
+        $review->update(['approved' => 0]);
+
+        return redirect()->route('reviews.index')->with('success', 'Review rejected.');
     }
 }

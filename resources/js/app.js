@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star-list li i');
     const ratingInput = document.getElementById('rating');
     const testimonialForm = document.getElementById('testimonialForm');
-    const messageTextarea = document.getElementById('message');
+    const messageTextarea = document.getElementById('comment');
     const charCount = document.getElementById('charCount');
 
     stars.forEach(star => {
