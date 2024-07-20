@@ -172,15 +172,7 @@
                                 @foreach($reviews as $index => $review)
                                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                                     <div class="text-center">
-                                        <div class="rating-container">
-                                            <ul class="star-list list-inline">
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                                <li class="list-inline-item"><i class=""></i></li>
-                                            </ul>
-                                        </div>
+                                        <x-star-rating :rating="$review->rating" />
                                         <div>
                                             <span class="rating">{{ $review->rating }}</span>
                                             <p class="general-text">{{ $review->comment }}</p>

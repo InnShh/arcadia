@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateReviewRequest;
 use Illuminate\Http\Request;
 use App\Models\Review;
 
 class ReviewController extends Controller
 {
-    public function store(Request $request) {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'message' => 'required|string|max:320',
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
+    public function index()
+    {
+        $reviews = Review::all();
+        return view('reviews.index', compact('reviews'));
+    }
+
+    public function create()
+    {
+        return view('reviews.create');
+    }
+    public function store(StoreUpdateReviewRequest $request)
+    {
+        $validatedData = $request->validated();
 
         Review::create([
             'pseudo' => $validatedData['name'],
@@ -22,5 +30,36 @@ class ReviewController extends Controller
         ]);
 
         return response()->json(['success' => true]);
+    }
+
+    public function show(Review $review)
+    {
+        return view('reviews.show', compact('review'));
+    }
+
+    public function edit(Review $review)
+    {
+        return view('reviews.edit', compact('review'));
+    }
+
+    public function update(StoreUpdateReviewRequest $request, Review $review)
+    {
+        $review->update($request->validated());
+
+        return redirect()->route('reviews.index')->with('success', 'Review updated successfully.');
+    }
+
+    public function destroy(Review $review)
+    {
+        $review->delete();
+
+        return redirect()->route('reviews.index')->with('success', 'Review deleted successfully.');
+    }
+
+    public function approve(Review $review)
+    {
+        $review->update(['approved' => 1]);
+
+        return redirect()->route('reviews.index')->with('success', 'Review approved successfully.');
     }
 }

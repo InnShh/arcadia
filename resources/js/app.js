@@ -55,27 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-//Stars Ratings
-document.addEventListener('DOMContentLoaded', function () {
-    const ratingContainers = document.querySelectorAll('.rating-container');
-    
-    ratingContainers.forEach(container => {
-        const ratingElement = container.parentElement.querySelector('.rating');
-        const ratingValue = parseFloat(ratingElement.textContent);
-        const starElements = container.querySelectorAll('i');
-        
-        for (let i = 0; i < 5; i++) {
-            if (ratingValue >= i + 1) {
-                starElements[i].classList.add('star-fill');
-            } else if (ratingValue > i) {
-                starElements[i].classList.add('star-half');
-            } else {
-                starElements[i].classList.add('star-outline');
-            }
-        }
-    });
-});
-
 //Stars for form ratings
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star-list .bi');

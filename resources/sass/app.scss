@@ -359,10 +359,14 @@ main {
             @include link-style(translateX, 5px);
         }
     }
-    .rating-container {
+    
+}
+.rating-container {
         font-family: 'Bootstrap-icons';
         i::before {
             font-style: normal;
+            color: $secondary-accent-color;
+            font-family: 'Bootstrap-icons';
         }
         i.star-fill::before {
             content: '\F586';
@@ -374,7 +378,7 @@ main {
             content: '\F588';
         }
     }
-}
+
 //testiminal form
 .testimonial {
     text-align: center;
@@ -722,6 +726,14 @@ main.dash-content {
     table th,
     table tr {
         text-align: center;
+    }
+}
+.td-comm-w {
+    width: 40%;
+}
+.td-visible-n {
+    @media (max-width: 768px) {
+        display: none;
     }
 }
 
