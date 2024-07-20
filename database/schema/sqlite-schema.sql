@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS reviews (
     rating INT NOT NULL,
     created_at DATETIME,
     updated_at DATETIME,
-    approved TINYINT(1) DEFAULT 0
+    approved TINYINT(1)
 );
 CREATE TABLE IF NOT EXISTS timetables (
     id INTEGER PRIMARY KEY autoincrement NOT NULL,

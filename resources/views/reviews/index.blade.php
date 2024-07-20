@@ -30,7 +30,7 @@
                             <x-star-rating :rating="$review->rating" />
                             <span class="rating">{{ $review->rating }}</span>
                         </td>
-                        <td>{{ $review->approved ? 'Yes' : 'No' }}</td>
+                        <td><x-approved-display :approved="$review->approved" /></td>
                         <td>
                             <a href="{{ route('reviews.show', $review->id) }}" class="btn btn-info">View</a>
                             <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-warning">Edit</a>

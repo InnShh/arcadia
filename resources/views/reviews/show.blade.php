@@ -17,7 +17,8 @@
                         <span class="rating">{{ $review->rating }}</span>
                         <p class="general-text">{{ $review->comment }}</p>
                         <span>{{ $review->pseudo }}</span><br />
-                        <span>{{ \Carbon\Carbon::parse($review->created_at)->format('m/d/Y') }}</span>
+                        <span>{{ \Carbon\Carbon::parse($review->created_at)->format('m/d/Y') }}</span><br />
+                        <x-approved-display :approved="$review->approved" />
                     </div>
                 </div>
                 <div class="card-footer">
