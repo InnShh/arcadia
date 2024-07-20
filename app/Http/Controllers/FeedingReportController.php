@@ -6,7 +6,6 @@ use App\Http\Requests\StoreFeedingReportRequest;
 use App\Models\Animal;
 use App\Models\FeedingReport;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class FeedingReportController extends Controller
 {
@@ -24,9 +23,18 @@ class FeedingReportController extends Controller
      */
     public function create()
     {
-        $employees = User::employee()->get();
+
         $animals = Animal::all();
-        return view('feeding-reports.create', compact('employees', 'animals'));
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isEmployee()) {
+            $employees = collect([$user]);
+            return view('emp.feeding-reports.create', compact('employees', 'animals'));
+        } elseif ($user->isAdmin()) {
+            $employees = User::employee()->get();
+            return view('feeding-reports.create', compact('employees', 'animals'));
+        }
+        abort(403);
     }
 
     /**
@@ -34,9 +42,20 @@ class FeedingReportController extends Controller
      */
     public function store(StoreFeedingReportRequest $request)
     {
-        FeedingReport::create($request->validated());
-
-        return redirect()->route('feeding-reports.index')->with('success', 'Feeding report created successfully.');
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isEmployee()) {
+            $validated = $request->validated();
+            if ($validated['user_id'] !== (string) $user->id) {
+                abort(403);
+            }
+            $report = FeedingReport::create($validated);
+            return redirect()->route('feeding-reports.create')->with('success', "Feeding report created successfully for {$report->animal->name}.");
+        } elseif ($user->isAdmin()) {
+            FeedingReport::create($request->validated());
+            return redirect()->route('feeding-reports.index')->with('success', 'Feeding report created successfully.');
+        }
+        abort(403);
     }
 
     /**

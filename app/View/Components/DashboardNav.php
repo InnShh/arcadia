@@ -26,9 +26,9 @@ class DashboardNav extends Component
             ];
         } elseif ($user->isEmployee()) {
             $this->links = [
-                // avis?
+                ['url' => route('reviews.index'), 'name' => 'Reviews'],
                 ['url' => route('activities.index'), 'name' => 'Activities'],
-                ['url' => route('feeding-reports.index'), 'name' => 'Feeding reports'],
+                ['url' => route('feeding-reports.create'), 'name' => 'Feeding reports'],
             ];
         } elseif ($user->isAdmin()) {
             $this->links = [
