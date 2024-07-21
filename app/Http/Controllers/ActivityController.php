@@ -40,14 +40,14 @@ class ActivityController extends Controller
         }
 
         $validated = $request->validate([
-            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=660,max_width=660,min_height=440,max_height=440|max:200',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
         ]);
 
         $activity = new Activity();
         if ($request->hasFile('image_file')) {
-            $imageName = 'image_' . Str::uuid() . '.' . $request->image_file->extension();
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
             $request->image_file->move(public_path('images'), $imageName);
             if ($activity->image && File::exists(public_path($activity->image))) {
                 File::delete(public_path($activity->image));
@@ -89,13 +89,13 @@ class ActivityController extends Controller
             abort(403);
         }
         $validated = $request->validate([
-            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=660,max_width=660,min_height=440,max_height=440|max:200',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
         ]);
 
         if ($request->hasFile('image_file')) {
-            $imageName = 'image_' . Str::uuid() . '.' . $request->image_file->extension();
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
             $request->image_file->move(public_path('images'), $imageName);
             if ($activity->image && File::exists(public_path($activity->image))) {
                 File::delete(public_path($activity->image));
@@ -115,6 +115,9 @@ class ActivityController extends Controller
         $user = auth()->user();
         if (!$user->isAdmin()) {
             abort(403);
+        }
+        if ($activity->image && File::exists(public_path($activity->image))) {
+            File::delete(public_path($activity->image));
         }
         $activity->delete();
 
