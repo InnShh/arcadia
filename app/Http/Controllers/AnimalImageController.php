@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Animal;
 use App\Models\AnimalImage;
+use File;
 use Illuminate\Http\Request;
+use Str;
 
 class AnimalImageController extends Controller
 {
@@ -24,10 +26,17 @@ class AnimalImageController extends Controller
     {
         $validated = $request->validate([
             'animal_id' => 'required|exists:animals,id',
-            'image_path' => 'required|string|max:255',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=1320,max_width=1320,min_height=880,max_height=880|max:1024',
         ]);
 
-        AnimalImage::create($validated);
+        $animalImage = new AnimalImage();
+        if ($request->hasFile('image_file')) {
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
+            $request->image_file->move(public_path('images'), $imageName);
+            $animalImage->image_path = 'images/' . $imageName;
+        }
+        $animalImage->animal_id = $validated['animal_id'];
+        $animalImage->save();
 
         return redirect()->route('animal-images.index')->with('success', 'Animal image created successfully.');
     }
@@ -42,10 +51,19 @@ class AnimalImageController extends Controller
     {
         $validated = $request->validate([
             'animal_id' => 'required|exists:animals,id',
-            'image_path' => 'required|string|max:255',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=1320,max_width=1320,min_height=880,max_height=880|max:1024',
         ]);
 
-        $animalImage->update($validated);
+        if ($request->hasFile('image_file')) {
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
+            $request->image_file->move(public_path('images'), $imageName);
+            if ($animalImage->image_path && File::exists(public_path($animalImage->image_path))) {
+                File::delete(public_path($animalImage->image_path));
+            }
+            $animalImage->image_path = 'images/' . $imageName;
+        }
+        $animalImage->animal_id = $validated['animal_id'];
+        $animalImage->save();
 
         return redirect()->route('animal-images.index')->with('success', 'Animal image updated successfully.');
     }
