@@ -59,6 +59,9 @@ class ExhibitImageController extends Controller
         if ($request->hasFile('image_file')) {
             $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
             $request->image_file->move(public_path('images'), $imageName);
+            if ($exhibitImage->image_path && File::exists(public_path($exhibitImage->image_path))) {
+                File::delete(public_path($exhibitImage->image_path));
+            }
             $exhibitImage->image_path = 'images/' . $imageName;
         }
         $exhibitImage->exhibit_id = $validated['exhibit_id'];
