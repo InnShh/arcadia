@@ -49,9 +49,6 @@ class ActivityController extends Controller
         if ($request->hasFile('image_file')) {
             $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
             $request->image_file->move(public_path('images'), $imageName);
-            if ($activity->image && File::exists(public_path($activity->image))) {
-                File::delete(public_path($activity->image));
-            }
             $activity->image = 'images/' . $imageName;
         }
         $activity->name = $validated['name'];
