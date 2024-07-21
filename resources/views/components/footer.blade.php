@@ -17,17 +17,17 @@
         </li>
 
         <li>
-        @if (Route::has('login'))
+            @if (Route::has('login'))
             @auth
-                <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Dashboard
-                </a>
+            <a href="{{ url('/home') }}" class="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                Login
+            </a>
             @else
-                <a href="{{ route('login') }}" class="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Log in
-                </a>
+            <a href="{{ route('login') }}" class="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                Login
+            </a>
             @endauth
-        @endif
+            @endif
         </li>
 
         <li>
@@ -36,15 +36,15 @@
     </ul>
 
     <p>Opening hours:</p>
-@foreach($timetables as $timetable)
-    <p>{{ $timetable->day_of_week_human }}: 
+    @foreach($timetables as $timetable)
+    <p>{{ $timetable->day_of_week_human }}:
         @if($timetable->opening_time && $timetable->closing_time)
-            {{ $timetable->opening_time }} - {{ $timetable->closing_time }}
+        {{ $timetable->opening_time }} - {{ $timetable->closing_time }}
         @else
-            Closed
+        Closed
         @endif
     </p>
-@endforeach
-            
-            <span>&#169; Copyright 2024. All rights reserved.</span>
-        </footer>
+    @endforeach
+
+    <span>&#169; Copyright 2024. All rights reserved.</span>
+</footer>
