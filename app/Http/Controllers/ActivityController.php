@@ -11,17 +11,34 @@ class ActivityController extends Controller
 {
     public function index()
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin() && !$user->isEmployee()) {
+            abort(403);
+        }
         $activities = Activity::all();
         return view('activities.index', compact('activities'));
     }
 
     public function create()
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
+
         return view('activities.create');
     }
 
     public function store(Request $request)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
+
         $validated = $request->validate([
             'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:255',
@@ -46,16 +63,31 @@ class ActivityController extends Controller
 
     public function show(Activity $activity)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin() && !$user->isEmployee()) {
+            abort(403);
+        }
         return view('activities.show', compact('activity'));
     }
 
     public function edit(Activity $activity)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin() && !$user->isEmployee()) {
+            abort(403);
+        }
         return view('activities.edit', compact('activity'));
     }
 
     public function update(Request $request, Activity $activity)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin() && !$user->isEmployee()) {
+            abort(403);
+        }
         $validated = $request->validate([
             'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:255',
@@ -79,6 +111,11 @@ class ActivityController extends Controller
 
     public function destroy(Activity $activity)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
         $activity->delete();
 
         return redirect()->route('activities.index')->with('success', 'Activity deleted successfully.');

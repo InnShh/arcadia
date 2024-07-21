@@ -17,11 +17,13 @@
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('activities.edit', $activity->id) }}" class="btn btn-warning">Edit</a>
+                    @if(auth()->user()->isAdmin())
                     <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>

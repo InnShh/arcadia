@@ -7,7 +7,9 @@
                 {{ session('success') }}
             </div>
             @endif
+            @if(auth()->user()->isAdmin())
             <a href="{{ route('activities.create') }}" class="btn btn-primary">Create Activity</a>
+            @endif
             <table class="table">
                 <thead>
                     <tr>
@@ -28,11 +30,13 @@
                         <td>
                             <a href="{{ route('activities.show', $activity->id) }}" class="btn btn-info">View</a>
                             <a href="{{ route('activities.edit', $activity->id) }}" class="btn btn-warning">Edit</a>
+                            @if(auth()->user()->isAdmin())
                             <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
