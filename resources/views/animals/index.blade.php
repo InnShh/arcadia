@@ -14,6 +14,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Exhibit</th>
+                        <th>Avatar</th>
                         <th>Images Count</th>
                         <th>Actions</th>
                     </tr>
@@ -24,6 +25,7 @@
                         <td>{{ $animal->id }}</td>
                         <td>{{ $animal->name }}</td>
                         <td>{{ $animal->exhibit->name }}</td>
+                        <td><img src="{{ $animal->avatar_image_path }}" alt="{{ $animal->name }}" style="width: 50px; height: 50px;"></td>
                         <td>{{ $animal->images_count }}</td>
                         <td>
                             <a href="{{ route('animals.edit', $animal->id) }}" class="btn btn-warning">Edit</a>
