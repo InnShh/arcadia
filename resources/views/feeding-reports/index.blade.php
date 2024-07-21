@@ -16,7 +16,7 @@
                         <th>Animal</th>
                         <th>Employee</th>
                         <th>Food</th>
-                        <th>Food Volume (kg)</th>
+                        <th>Food Volume (g)</th>
                         <th>Details</th>
                         <th>Actions</th>
                     </tr>
