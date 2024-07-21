@@ -81,6 +81,8 @@ CREATE TABLE IF NOT EXISTS exhibits (
     slug VARCHAR(255),
     name VARCHAR(255),
     description TEXT,
+    state TEXT,
+    state_at DATETIME,
     created_at DATETIME,
     updated_at DATETIME
 );

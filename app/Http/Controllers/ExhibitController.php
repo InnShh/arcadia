@@ -32,6 +32,8 @@ class ExhibitController extends Controller
             'slug' => 'nullable|string|max:255',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'state_at' => 'nullable|datetime',
+            'state' => 'nullable|string',
         ]);
 
         Exhibit::create($validated);
@@ -66,6 +68,8 @@ class ExhibitController extends Controller
             'slug' => 'nullable|string|max:255',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'state_at' => 'nullable|date',
+            'state' => 'nullable|string',
         ]);
 
         $exhibit->update($validated);

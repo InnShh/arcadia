@@ -3,10 +3,13 @@ import './bootstrap';
 //onload parallax
 // document.addEventListener("DOMContentLoaded", function() {
 window.addEventListener("load", function() {
-        const hero = document.querySelector('.hero-bg');
+    const hero = document.querySelector('.hero-bg');
     const heroContent = document.querySelector('.hero-content');
     const frontL = document.querySelector('.lion');
-  
+    // Exit if any elements are missing
+    if (!hero || !frontL || !heroContent) {
+        return;
+    }
     //initial state 
     hero.style.transform = 'scale(1.1)';
     hero.style.opacity = '0';
@@ -95,10 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
 //testimonial form to send
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star-list li i');
+    if(!stars) return;
     const ratingInput = document.getElementById('rating');
+    if(!ratingInput) return;
     const testimonialForm = document.getElementById('testimonialForm');
+    if(!testimonialForm) return;
     const messageTextarea = document.getElementById('comment');
+    if(!messageTextarea) return;
     const charCount = document.getElementById('charCount');
+    if(!charCount) return;
 
     stars.forEach(star => {
         star.addEventListener('click', function() {
@@ -156,7 +164,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Contact form
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('submit-contact').addEventListener('click', function() {
+    const submitButton = document.getElementById('submit-contact');
+    if (!submitButton) {
+        return;
+    }
+    submitButton.addEventListener('click', function() {
 
         const firstName = document.getElementById('name-contact').value.trim();
         const lastName = document.getElementById('nameL-contact').value.trim();
@@ -207,3 +219,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+// current time button
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all 'Set to Now' buttons and attach event listeners
+    document.querySelectorAll('.set-now-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            setCurrentDatetime(this);
+        });
+    });
+});
+
+function setCurrentDatetime(button) {
+    var inputId = button.getAttribute('data-target'); // Gets the data attribute value
+    var inputElement = document.getElementById(inputId);
+    if (!inputElement) {
+        console.error("Input element not found for ID: ", inputId);
+        return;
+    }
+    var now = new Date();
+    var localDatetime = formatLocalDateTime(now);
+    inputElement.value = localDatetime;
+}
+
+function formatLocalDateTime(date) {
+    var year = date.getFullYear();
+    var month = ('0' + (date.getMonth() + 1)).slice(-2); // months are zero-indexed
+    var day = ('0' + date.getDate()).slice(-2);
+    var hour = ('0' + date.getHours()).slice(-2);
+    var minute = ('0' + date.getMinutes()).slice(-2);
+
+    return year + '-' + month + '-' + day + 'T' + hour + ':' + minute;
+}

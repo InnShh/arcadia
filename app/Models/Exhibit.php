@@ -33,6 +33,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Exhibit extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'state_at' => 'datetime',
+    ];
+
+    protected $fillable = [
+        'slug',
+        'name',
+        'description',
+        'state_at',
+        'state',
+    ];
+
     public function images(): HasMany
     {
         return $this->hasMany(ExhibitImage::class, 'exhibit_id');

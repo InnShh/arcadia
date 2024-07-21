@@ -1,0 +1,1 @@
+@isset($datetime)<span class="badge bg-secondary" title="{{$datetime}}">{{ $datetime->diffForHumans() }}</span> @endisset

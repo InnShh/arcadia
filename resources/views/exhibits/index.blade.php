@@ -14,6 +14,7 @@
                         <th class="dash-activity-id">ID</th>
                         <th>Name</th>
                         <th class="dash-activity-id">Description</th>
+                        <th>Exhibit state</th>
                         <th>Animals Count</th>
                         <th>Actions</th>
                     </tr>
@@ -24,6 +25,7 @@
                         <td class="dash-activity-id">{{ $exhibit->id }}</td>
                         <td>{{ $exhibit->name }}</td>
                         <td class="dash-activity-id">{{ $exhibit->description }}</td>
+                        <td>{{ $exhibit->state }}<br /><x-date-badge :datetime="$exhibit->state_at" /></td>
                         <td>{{ $exhibit->animals_count }}</td>
                         <td>
                             <a href="{{ route('exhibits.show', $exhibit) }}" class="btn btn-info">View</a>

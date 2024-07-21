@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         User::factory(2)->employee()->create();
         // User::factory(1)->veterinary()->create();
         $this->call([
+            ExhibitSeeder::class,
             ReviewSeeder::class,
             VetoReportSeeder::class,
             FeedingReportSeeder::class,
