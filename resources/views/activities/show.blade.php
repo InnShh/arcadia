@@ -12,7 +12,9 @@
                     {{ $activity->name }}
                 </div>
                 <div class="card-body">
+                    @isset($activity->image)
                     <img src="{{ $activity->image }}" alt="{{ $activity->name }}" style="width: 100px; height: 100px;">
+                    @endisset
                     <p>{{ $activity->description }}</p>
                 </div>
                 <div class="card-footer">

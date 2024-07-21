@@ -24,7 +24,11 @@
                     @foreach ($activities as $activity)
                     <tr>
                         <td class="dash-activity-id">{{ $activity->id }}</td>
-                        <td><img src="{{ $activity->image }}" alt="{{ $activity->name }}" style="width: 50px; height: 50px;"></td>
+                        <td>
+                            @isset($activity->image)
+                            <img src="{{ $activity->image }}" alt="{{ $activity->name }}" style="width: 50px; height: 50px;">
+                            @endisset
+                        </td>
                         <td>{{ $activity->name }}</td>
                         <td class="dash-activity-id">{{ $activity->description }}</td>
                         <td>
