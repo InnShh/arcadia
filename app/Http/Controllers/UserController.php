@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserRole;
+use File;
 use Hash;
 use Illuminate\Http\Request;
+use Str;
 
 class UserController extends Controller
 {
@@ -27,16 +29,21 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'user_role_id' => 'required|exists:user_roles,id',
             'password' => 'required|min:6',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
         ]);
 
-        $user = new User([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'user_role_id' => $validated['user_role_id'],
-            'password' => Hash::make($validated['password']),
-        ]);
-
+        $user = new User();
+        if ($request->hasFile('image_file')) {
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
+            $request->image_file->move(public_path('images'), $imageName);
+            $user->avatar_image_path = 'images/' . $imageName;
+        }
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->user_role_id = $validated['user_role_id'];
+        $user->password = Hash::make($validated['password']);
         $user->save();
+
         return redirect(route('users.index'))->with('success', 'User saved!');
     }
 
@@ -55,13 +62,22 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:6',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
         ]);
 
         $user = User::findOrFail($id);
+        if ($request->hasFile('image_file')) {
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
+            $request->image_file->move(public_path('images'), $imageName);
+            if ($user->image && File::exists(public_path($user->image))) {
+                File::delete(public_path($user->image));
+            }
+            $user->avatar_image_path = 'images/' . $imageName;
+        }
         $user->name = $request->get('name');
         $user->email = $request->get('email');
 

@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         ]);
         User::factory()->create([
             'name' => 'Test Veterinary',
+            'avatar_image_path' => '/images/veto-female_400x400px.jpg',
             'email' => 'vet@example.test',
             'user_role_id' => User::ROLE_VETERINARY,
             'password' => 'vet@example.test',

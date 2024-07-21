@@ -2,7 +2,8 @@
 CREATE TABLE IF NOT EXISTS "migrations" ("id" integer primary key autoincrement not null, "migration" varchar not null, "batch" integer not null);
 CREATE TABLE IF NOT EXISTS "users" (
     "id" integer primary key autoincrement not null, 
-    "name" varchar not null, 
+    "name" varchar not null,
+    "avatar_image_path" VARCHAR(255),
     "email" varchar not null, 
     "user_role_id" INTEGER NOT NULL,
     "email_verified_at" datetime, 
