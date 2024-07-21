@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/users', UserController::class);
     Route::resource('/activities', ActivityController::class);
     Route::resource('/exhibits', ExhibitController::class)->except(['show']);
+    Route::get('/exhibits/{exhibit}/state', [ExhibitController::class, 'state'])->name('exhibits.state.edit');
+    Route::put('/exhibits/{exhibit}/state', [ExhibitController::class, 'stateUpdate'])->name('exhibits.state.update');
     Route::resource('/exhibit-images', ExhibitImageController::class);
     Route::resource('/animals', AnimalController::class)->except(['show']);
     Route::resource('/animal-images', AnimalImageController::class);
