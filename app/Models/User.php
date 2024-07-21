@@ -43,6 +43,8 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|User admin()
  * @method static Builder|User employee()
  * @method static Builder|User veterinary()
+ * @property string|null $avatar_image_path
+ * @method static Builder|User whereAvatarImagePath($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable

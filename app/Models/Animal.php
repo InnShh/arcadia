@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * 
@@ -44,6 +45,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Animal whereRace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Animal whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Animal whereTitleDescription($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\FeedingReport> $feeds
+ * @property-read int|null $feeds_count
  * @mixin \Eloquent
  */
 class Animal extends Model
@@ -61,5 +64,13 @@ class Animal extends Model
     public function exhibit(): BelongsTo
     {
         return $this->belongsTo(Exhibit::class, 'exhibit_id');
+    }
+    public function feeds(): HasMany
+    {
+        return $this->hasMany(FeedingReport::class, 'animal_id');
+    }
+    public function latestFeed(): HasOne
+    {
+        return $this->hasOne(FeedingReport::class, 'animal_id')->latest();
     }
 }

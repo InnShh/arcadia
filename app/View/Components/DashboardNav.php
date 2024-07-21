@@ -21,7 +21,6 @@ class DashboardNav extends Component
             $this->links = [
                 ['url' => route('exhibits.index'), 'name' => 'Exhibits'],
                 ['url' => route('animals.index'), 'name' => 'Animals'],
-                ['url' => route('veterinary-reports.index'), 'name' => 'Veterinary reports'],
                 ['url' => route('feeding-reports.index'), 'name' => 'Feeding reports'],
             ];
         } elseif ($user->isEmployee()) {

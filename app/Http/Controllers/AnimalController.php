@@ -19,8 +19,16 @@ class AnimalController extends Controller
     }
     public function index()
     {
-        $animals = Animal::with('exhibit')->withCount('images')->get();
-        return view('animals.index', compact('animals'));
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isVeterinary()) {
+            $animals = Animal::with('exhibit')->withCount('images')->get();
+            return view('vet.animals.index', compact('animals'));
+        } elseif ($user->isAdmin()) {
+            $animals = Animal::with(['exhibit', 'latestFeed'])->withCount('images')->get();
+            return view('animals.index', compact('animals'));
+        }
+        abort(403);
     }
 
     public function create()

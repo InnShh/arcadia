@@ -28,6 +28,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibit whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Animal> $animals
  * @property-read int|null $animals_count
+ * @property string|null $state
+ * @property \Illuminate\Support\Carbon|null $state_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibit whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibit whereStateAt($value)
  * @mixin \Eloquent
  */
 class Exhibit extends Model

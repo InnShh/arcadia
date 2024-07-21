@@ -15,6 +15,11 @@ class VetoReportController extends Controller
      */
     public function index()
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
         $vetoReports = VetoReport::with('animal', 'veto')->get();
         return view('veterinary-reports.index', compact('vetoReports'));
     }
@@ -22,11 +27,25 @@ class VetoReportController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $animals = Animal::all();
-        $veterinarians = User::veterinary()->get();
-        return view('veterinary-reports.create', compact('animals', 'veterinarians'));
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isVeterinary()) {
+            $animalId = $request->input('for', null);
+            if ($animalId) {
+                $animals = collect([Animal::findOrFail($animalId)]);
+            } else {
+                $animals = Animal::all();
+            }
+            $veterinarians = collect([$user]);
+            return view('veterinary-reports.create', compact('animals', 'veterinarians'));
+        } elseif ($user->isAdmin()) {
+            $animals = Animal::all();
+            $veterinarians = User::veterinary()->get();
+            return view('veterinary-reports.create', compact('animals', 'veterinarians'));
+        }
+        abort(403);
     }
 
     /**
@@ -34,6 +53,11 @@ class VetoReportController extends Controller
      */
     public function store(Request $request)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isVeterinary() && !$user->isAdmin()) {
+            abort(403);
+        }
         $validated = $request->validate([
             'animal_id' => 'required|exists:animals,id',
             'user_id' => ['required', 'exists:users,id', new VeterinaryUser()],
@@ -41,7 +65,15 @@ class VetoReportController extends Controller
             'details' => 'nullable|string',
         ]);
 
+        if ($user->isVeterinary() && $validated['user_id'] !== (string) $user->id) {
+            abort(403);
+        }
+
         VetoReport::create($validated);
+
+        if ($user->isVeterinary()) {
+            return redirect()->route('animals.index')->with('success', 'Veterinary Report created successfully.');
+        }
 
         return redirect()->route('veterinary-reports.index')->with('success', 'Veterinary Report created successfully.');
     }
@@ -51,6 +83,11 @@ class VetoReportController extends Controller
      */
     public function show(VetoReport $veterinaryReport)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
         return view('veterinary-reports.show', compact('veterinaryReport'));
     }
 
@@ -59,6 +96,11 @@ class VetoReportController extends Controller
      */
     public function edit(VetoReport $veterinaryReport)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
         $animals = Animal::all();
         $veterinarians = User::veterinary()->get();
         return view('veterinary-reports.edit', compact('veterinaryReport', 'animals', 'veterinarians'));
@@ -69,6 +111,12 @@ class VetoReportController extends Controller
      */
     public function update(Request $request, VetoReport $veterinaryReport)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
+
         $validated = $request->validate([
             'animal_id' => 'required|exists:animals,id',
             'user_id' => ['required', 'exists:users,id', new VeterinaryUser()],
@@ -86,6 +134,12 @@ class VetoReportController extends Controller
      */
     public function destroy(VetoReport $veterinaryReport)
     {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
+
         $veterinaryReport->delete();
 
         return redirect()->route('veterinary-reports.index')->with('success', 'Veterinary Report deleted successfully.');
