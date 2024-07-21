@@ -197,7 +197,7 @@
                                 </ul>
                                 <input type="hidden" name="rating" id="rating" value="0">
                             </div>
-                            <input class="form-control w-chbl" type="text" name="pseudo" id="pseudo" placeholder="Your name" autocomplete required>
+                            <input class="form-control w-chbl" type="text" name="pseudo" id="pseudo" placeholder="Your name" autocomplete="name" required>
                             <div id="charCount">0/320</div>
                             <textarea class="form-control w-chbl" name="comment" type="text" id="comment" rows="6" placeholder="Your testimonial, 320 characters max" maxlength="320" required></textarea>
                             <button type="submit" class="btn btn-outlined w-chbl">S U B M I T</button>
