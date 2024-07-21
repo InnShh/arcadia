@@ -73,8 +73,8 @@ class UserController extends Controller
         if ($request->hasFile('image_file')) {
             $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
             $request->image_file->move(public_path('images'), $imageName);
-            if ($user->image && File::exists(public_path($user->image))) {
-                File::delete(public_path($user->image));
+            if ($user->avatar_image_path && File::exists(public_path($user->avatar_image_path))) {
+                File::delete(public_path($user->avatar_image_path));
             }
             $user->avatar_image_path = 'images/' . $imageName;
         }
