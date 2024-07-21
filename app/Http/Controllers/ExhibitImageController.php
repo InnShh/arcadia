@@ -6,7 +6,9 @@ use App\Http\Requests\StoreExhibitImageRequest;
 use App\Http\Requests\UpdateExhibitImageRequest;
 use App\Models\Exhibit;
 use App\Models\ExhibitImage;
+use File;
 use Illuminate\Http\Request;
+use Str;
 
 class ExhibitImageController extends Controller
 {
@@ -26,10 +28,20 @@ class ExhibitImageController extends Controller
     {
         $validated = $request->validate([
             'exhibit_id' => 'required|exists:exhibits,id',
-            'image_path' => 'required|string|max:255',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=1320,max_width=1320,min_height=880,max_height=880|max:1024',
         ]);
 
-        ExhibitImage::create($validated);
+        $exhibitImage = new ExhibitImage();
+        if ($request->hasFile('image_file')) {
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
+            $request->image_file->move(public_path('images'), $imageName);
+            if ($exhibitImage->image_path && File::exists(public_path($exhibitImage->image_path))) {
+                File::delete(public_path($exhibitImage->image_path));
+            }
+            $exhibitImage->image_path = 'images/' . $imageName;
+        }
+        $exhibitImage->exhibit_id = $validated['exhibit_id'];
+        $exhibitImage->save();
 
         return redirect()->route('exhibit-images.index')->with('success', 'Exhibit image created successfully.');
     }
@@ -44,10 +56,19 @@ class ExhibitImageController extends Controller
     {
         $validated = $request->validate([
             'exhibit_id' => 'required|exists:exhibits,id',
-            'image_path' => 'required|string|max:255',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=1320,max_width=1320,min_height=880,max_height=880|max:1024',
         ]);
 
-        $exhibitImage->update($validated);
+        if ($request->hasFile('image_file')) {
+            $imageName = 'image_' . Str::uuid() . '.jpg'; // . $request->image_file->extension();
+            $request->image_file->move(public_path('images'), $imageName);
+            if ($exhibitImage->image_path && File::exists(public_path($exhibitImage->image_path))) {
+                File::delete(public_path($exhibitImage->image_path));
+            }
+            $exhibitImage->image_path = 'images/' . $imageName;
+        }
+        $exhibitImage->exhibit_id = $validated['exhibit_id'];
+        $exhibitImage->save();
 
         return redirect()->route('exhibit-images.index')->with('success', 'Exhibit image updated successfully.');
     }
