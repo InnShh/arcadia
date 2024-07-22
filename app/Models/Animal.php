@@ -73,4 +73,12 @@ class Animal extends Model
     {
         return $this->hasOne(FeedingReport::class, 'animal_id')->latest();
     }
+    public function reports(): HasMany
+    {
+        return $this->hasMany(VetoReport::class, 'animal_id');
+    }
+    public function latestReport(): HasOne
+    {
+        return $this->hasOne(VetoReport::class, 'animal_id')->latest();
+    }
 }

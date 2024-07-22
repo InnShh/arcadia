@@ -49,16 +49,16 @@
 
         </section>
 
+        @isset($animal->latestReport)
         <section class="container general-wrapper veto-com">
             <div class="row">
-                <h3>Veterinarian comments</h3>
+                <h3>Veterinarian comment</h3>
             </div>
             <div class="row">
-
-                <x-veto-comment imgSrc="/images/veto-female_400x400px.jpg" name="Dr. Sarah Thompson" role="Veterinarian in charge of savanna animals." date="15/05/2024" comment="Max is a gentle giant with a calm disposition. His health is excellent, and he thrives on his diet of fresh acacia leaves, which we ensure is always plentiful." />
-
+                <x-veto-comment :imgSrc="$animal->latestReport->veto->avatar_image_path" :name="$animal->latestReport->veto->name" :role="$animal->latestReport->veto->role->name" :date="$animal->latestReport->visit_date" :comment="$animal->latestReport->details" />
             </div>
         </section>
+        @endisset
 
         <x-donate-contact />
 
