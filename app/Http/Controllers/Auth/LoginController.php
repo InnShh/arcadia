@@ -26,6 +26,19 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isEmployee()) {
+            return $this->redirectTo = route('feeding-reports.create');
+        } elseif ($user->isVeterinary()) {
+            return $this->redirectTo = route('animals.index');
+        } elseif ($user->isAdmin()) {
+            return $this->redirectTo = route('users.index');
+        }
+        abort(403);
+    }
 
     /**
      * Create a new controller instance.
