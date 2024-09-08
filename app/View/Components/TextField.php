@@ -14,6 +14,7 @@ class TextField extends Component
     public function __construct(
         public string $name,
         public string|null $value = '',
+        public bool $required = false,
     ) {
         //
     }

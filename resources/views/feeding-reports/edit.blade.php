@@ -5,11 +5,11 @@
             <form action="{{ route('feeding-reports.update', $feedingReport->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <x-select-field name="animal_id" label="Animal:" :items="$animals" :value="$feedingReport->animal_id" />
-                <x-select-field name="user_id" label="Employee:" :items="$employees" :value="$feedingReport->user_id" />
-                <x-string-field name="food" type="text" :value="$feedingReport->food" />
-                <x-string-field name="food_vol" type="number" :value="$feedingReport->food_vol" />
-                <x-text-field name="details" :value="$feedingReport->details" />
+                <x-select-field name="animal_id" label="Animal:" :items="$animals" :value="$feedingReport->animal_id" required="1" />
+                <x-select-field name="user_id" label="Employee:" :items="$employees" :value="$feedingReport->user_id" required="1" />
+                <x-string-field name="food" type="text" :value="$feedingReport->food" required="1" />
+                <x-string-field name="food_vol" type="number" :value="$feedingReport->food_vol" required="1" />
+                <x-text-field name="details" :value="$feedingReport->details" required="1" />
                 <x-submit-button text="Update" />
             </form>
         </div>

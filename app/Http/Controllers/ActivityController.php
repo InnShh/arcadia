@@ -40,7 +40,7 @@ class ActivityController extends Controller
         }
 
         $validated = $request->validate([
-            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=660,max_width=660,min_height=440,max_height=440|max:200',
+            'image_file' => 'required|image|mimes:jpeg,jpg|dimensions:min_width=660,max_width=660,min_height=440,max_height=440|max:200',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
         ]);

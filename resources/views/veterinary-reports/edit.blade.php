@@ -5,13 +5,13 @@
             <form action="{{ route('veterinary-reports.update', $veterinaryReport) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <x-select-field name="animal_id" label="Animal:" :selected="$veterinaryReport->animal_id" :items="$animals" />
-                <x-select-field name="user_id" label="Veterinary:" :selected="$veterinaryReport->user_id" :items="$veterinarians" />
+                <x-select-field name="animal_id" label="Animal:" :selected="$veterinaryReport->animal_id" :items="$animals" required="1" />
+                <x-select-field name="user_id" label="Veterinary:" :selected="$veterinaryReport->user_id" :items="$veterinarians" required="1" />
                 <div class="form-group">
                     <label for="visit_date">Visit Date</label>
-                    <input type="date" name="visit_date" id="visit_date" class="form-control" value="{{ $veterinaryReport->visit_date }}">
+                    <input type="date" name="visit_date" id="visit_date" class="form-control" value="{{ $veterinaryReport->visit_date }}" required>
                 </div>
-                <x-text-field name="details" :value="$veterinaryReport->details" />
+                <x-text-field name="details" :value="$veterinaryReport->details" required="1" />
                 <x-submit-button text="Update" />
             </form>
         </div>

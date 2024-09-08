@@ -13,7 +13,7 @@
                 <div class="new-exhibit-state">
                     <p><b>New {{$exhibit->name}} exhibit state:</b></p>
                     <x-datetime-field name="state_at" label="State updated at:" :value="$exhibit->state_at" />
-                    <x-text-field name="state" :value="$exhibit->state" />
+                    <x-text-field name="state" :value="$exhibit->state" required="1" />
                     <x-submit-button text="Update" />
                 </div>
             </form>
