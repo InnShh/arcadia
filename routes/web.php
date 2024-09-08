@@ -18,6 +18,7 @@ Route::post('/send-message', [HomePageController::class, 'sendMessage'])->name('
 Route::post('/load-more-animals', [HomePageController::class, 'loadMoreAnimals'])->name('homepage.load-more-animals');
 Route::resource('/reviews', ReviewController::class)->only(['store']);
 Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\HomePageController::class, 'dashboard'])->name('dashboard');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/users', UserController::class);
     Route::resource('/activities', ActivityController::class);
