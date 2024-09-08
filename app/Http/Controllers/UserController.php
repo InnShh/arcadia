@@ -7,6 +7,7 @@ use App\Models\UserRole;
 use File;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Str;
 
 class UserController extends Controller
@@ -29,7 +30,17 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'user_role_id' => 'required|exists:user_roles,id',
             'password' => 'required|min:6',
-            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
+            'image_file' => [
+                Rule::requiredIf(function () use ($request) {
+                    return $request->user_role_id == User::ROLE_VETERINARY;
+                }),
+                'image',
+                'mimes:jpeg,jpg',
+                'dimensions:min_width=400,max_width=400,min_height=400,max_height=400',
+                'max:100'
+            ],
+        ], [
+            'image_file.required' => 'An image file is required for veterinary. It is shown on site.',
         ]);
 
         $user = new User();
@@ -66,7 +77,17 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:6',
-            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
+            'image_file' => [
+                Rule::requiredIf(function () use ($request) {
+                    return $request->user_role_id == User::ROLE_VETERINARY;
+                }),
+                'image',
+                'mimes:jpeg,jpg',
+                'dimensions:min_width=400,max_width=400,min_height=400,max_height=400',
+                'max:100'
+            ],
+        ], [
+            'image_file.required' => 'An image file is required for veterinary. It is shown on site.',
         ]);
 
         $user = User::findOrFail($id);
@@ -78,11 +99,11 @@ class UserController extends Controller
             }
             $user->avatar_image_path = 'images/' . $imageName;
         }
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
 
-        if ($request->get('password')) {
-            $user->password = bcrypt($request->get('password'));
+        if (!empty($validated['password'])) {
+            $user->password = bcrypt($validated['password']);
         }
 
         $user->save();
