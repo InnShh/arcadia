@@ -15,7 +15,8 @@ class DateField extends Component
     public function __construct(
         public string $name,
         public string $label,
-        public Carbon|null $value = null
+        public Carbon|null $value = null,
+        public bool $required = false,
     ) {
         $this->value = ($value ?? Carbon::now());
     }
