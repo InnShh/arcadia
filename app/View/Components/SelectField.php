@@ -19,6 +19,7 @@ class SelectField extends Component
         public string $values = 'id',
         public string $labels = 'name',
         public string|int|null $selected = null,
+        public bool $required = false,
     ) {
         //
     }

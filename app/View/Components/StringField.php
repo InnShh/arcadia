@@ -17,6 +17,7 @@ class StringField extends Component
         public string $label = '',
         public string|null $value = '',
         public string $type = 'text',
+        public bool $required = false,
     ) {
         //
     }

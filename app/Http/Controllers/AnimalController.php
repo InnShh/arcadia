@@ -41,9 +41,9 @@ class AnimalController extends Controller
     {
         $validated = $request->validate([
             'exhibit_id' => 'required|exists:exhibits,id',
-            'slug' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
+            'image_file' => 'required|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
         ]);
 
         $animal = new Animal();
@@ -53,7 +53,7 @@ class AnimalController extends Controller
             $animal->avatar_image_path = 'images/' . $imageName;
         }
         $animal->exhibit_id = $validated['exhibit_id'];
-        $animal->slug = $validated['slug'];
+        $animal->slug = Str::slug($validated['slug']);
         $animal->name = $validated['name'];
         $animal->save();
 
@@ -70,7 +70,7 @@ class AnimalController extends Controller
     {
         $validated = $request->validate([
             'exhibit_id' => 'required|exists:exhibits,id',
-            'slug' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'image_file' => 'nullable|image|mimes:jpeg,jpg|dimensions:min_width=400,max_width=400,min_height=400,max_height=400|max:100',
         ]);
@@ -84,7 +84,7 @@ class AnimalController extends Controller
             $animal->avatar_image_path = 'images/' . $imageName;
         }
         $animal->exhibit_id = $validated['exhibit_id'];
-        $animal->slug = $validated['slug'];
+        $animal->slug = Str::slug($validated['slug']);
         $animal->name = $validated['name'];
         $animal->save();
 

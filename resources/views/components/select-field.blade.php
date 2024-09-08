@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="{{ $name }}">{{ $label }}</label>
-    <select name="{{ $name }}" id="{{ $name }}" class="form-control @error($name)is-invalid @enderror">
+    <select name="{{ $name }}" id="{{ $name }}" class="form-control @error($name)is-invalid @enderror" @required($required??false)>
         @foreach ($items as $item)
         <option value="{{ $item->$values }}" @selected(old($name,$selected)==$item->id)>{{ $item->$labels }}</option>
         @endforeach
