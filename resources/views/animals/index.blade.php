@@ -16,6 +16,7 @@
                         <th>Exhibit</th>
                         <th>Avatar</th>
                         <th>Images Count</th>
+                        <th>Page Views</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         <td>{{ $animal->exhibit->name }}</td>
                         <td><img src="{{ $animal->avatar_image_path }}" alt="{{ $animal->name }}" style="width: 50px; height: 50px;"></td>
                         <td>{{ $animal->images_count }}</td>
+                        <td>{{ $animal->getPageViews() }}</td>
                         <td>
                             <a href="{{ route('animals.edit', $animal->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('animals.destroy', $animal->id) }}" method="POST" style="display:inline-block;">

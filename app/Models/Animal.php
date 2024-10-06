@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Redis;
+use Log;
 
 /**
  * 
@@ -80,5 +82,28 @@ class Animal extends Model
     public function latestReport(): HasOne
     {
         return $this->hasOne(VetoReport::class, 'animal_id')->latest();
+    }
+    function incrementPageViews(): void
+    {
+        try {
+            Redis::incr("animals.{$this->id}.pageloads", 1);
+        } catch (\Throwable $th) {
+            Log::error("Animal 'incrementPageViews': Redis error: " . $th->getMessage(), [
+                "animal_id" => $this->id,
+            ]);
+        }
+        return;
+    }
+    function getPageViews(): string
+    {
+        try {
+            return Redis::get("animals.{$this->id}.pageloads") ?? '-';
+        } catch (\Throwable $th) {
+            Log::error("Animal 'getPageViews': Redis error: " . $th->getMessage(), [
+                "animal_id" => $this->id,
+            ]);
+            return '-';
+        }
+        return '-';
     }
 }
