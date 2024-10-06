@@ -15,6 +15,7 @@ class AnimalController extends Controller
     public function show(Exhibit $exhibit, Animal $animal)
     {
         $animal->load(['images', 'exhibit.images']);
+        $animal->incrementPageViews();
         return view('animals.show', compact('animal'));
     }
     public function index()

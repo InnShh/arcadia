@@ -62,4 +62,17 @@ class HomePageController extends Controller
 
         return response()->json(['success' => 'Your message has been sent successfully!']);
     }
+    function dashboard()
+    {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        if ($user->isEmployee()) {
+            return redirect()->route('feeding-reports.create');
+        } elseif ($user->isVeterinary()) {
+            return redirect()->route('animals.index');
+        } elseif ($user->isAdmin()) {
+            return redirect()->route('users.index');
+        }
+        abort(403);
+    }
 }
