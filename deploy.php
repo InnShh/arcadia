@@ -1,7 +1,9 @@
 <?php
+
 namespace Deployer;
 
 require 'recipe/laravel.php';
+require 'contrib/npm.php';
 
 // Config
 
@@ -20,3 +22,4 @@ host('innash.net')
 // Hooks
 
 after('deploy:failed', 'deploy:unlock');
+after('deploy:update_code', 'npm:install');
